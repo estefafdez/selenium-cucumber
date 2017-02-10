@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>1.0.0</modelVersion>
+
+		 <groupId>SeleniumCucumberJava</groupId>
+	    <artifactId>com.selenium.cucumber</artifactId>
+	    <version>0.0.1</version>
+    
+    <properties>
+    	<!-- Encoding section -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<!-- Versions section -->
+		<selenium.version>2.53.1</selenium.version>
+		<cucumber-java.version>1.2.2</cucumber-java.version>
+		<cucumber-junit.version>1.2.2</cucumber-junit.version>
+		<junit.version>4.11</junit.version>
+
+    	<!-- Test Browser -->
+		<!-- This Parameters select where run the test [Remote ,Firefox ,Chrome ,Internet Explorer] -->
+		<browser>Firefox</browser>
+    </properties>
+
+    <dependencies>
+        <!-- These are the cucumber dependencies -->
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber-java.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- These are the cucumber-junit dependencies -->
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber-junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- These are the junit dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
+    	<!-- These are the selenium-webdriver dependencies -->	
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+	    
+	</dependencies>
+</project>
