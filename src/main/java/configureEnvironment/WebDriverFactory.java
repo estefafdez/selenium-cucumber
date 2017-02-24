@@ -1,64 +1,71 @@
 package configureEnvironment;
 
-import java.util.concurrent.TimeUnit;
+import java.net.MalformedURLException;
+import java.net.URL;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import com.saucelabs.common.SauceOnDemandAuthentication;
 
+import drivers.RemoteDriver;
 /**
- * This class select and configure the Driver according to your browser selection on the POM.
- * @author estefafdez
- *
+ * WebDriver Factory Class to select local driver or remote driver (SauceLabs).
+ * @author Francisco Fernandez <ffgonzalez1989@gmail.com>
+ * @author Estefanía Fdez Muñoz <estefafdez@gmail.com>
+ * @author Rubén Nogueroles Bernal <rubennogueroles@gmail.com>
  */
-public class WebDriverFactory 
-{
-	static WebDriver driver = null;
-	static String browser = null;
+
+public class WebDriverFactory {
+
+    Logger log = Logger.getLogger(WebDriverFactory.class);
+    FirefoxProfile firefoxProfile;
+    ChromeOptions options;
+
+    private String seleniumURI = SauceHelpers.buildSauceUri();
+
+    public WebDriver getDriver(String driverType, String os, DesiredCapabilities capabilities, SauceOnDemandAuthentication authentication)
+	    		throws MalformedURLException {
 	
-	public static String getBrowser()
-	{
-		browser = System.getProperty("browser"); 
-		
-		if(browser == null)
-			browser = "Firefox";
-		return browser;
-	}
+	    		/******** The driver selected is Local: Firefox  ********/
+    	
+	        if (driverType.equalsIgnoreCase("FIREFOX")) {
+	        	 	System.setProperty("webdriver.gecko.driver", "resources/files/software/"+os+"/geckodriver");    
+	            	return new FirefoxDriver();
+	        }
+	        
+	        /******** The driver selected is Local: Chrome  ********/
 	   
-			
-	 public  static WebDriver CreateNewWebDriver(String browser){		
-				/******** The driver selected is  Firefox  ********/  	
-			    if (browser.equalsIgnoreCase("FIREFOX")) {
-			    		driver = new FirefoxDriver();
-			    }
-					        
-			    /******** The driver selected is Chrome  ********/
-					   
-			    else if (browser.equalsIgnoreCase("CHROME")) {
-			    		System.setProperty("webdriver.chrome.driver", "resources/files/software/chromedriver");         
-			    		driver = new ChromeDriver();
-			    } 
-					        
-			    /******** The driver selected is Internet Explorer ********/        
-			    else if (browser.equalsIgnoreCase("INTERNET EXPLORER")) {
-			    		System.setProperty("webdriver.ie.driver", "resources/files/software/IEDriverServer.exe");
-			    		driver = new InternetExplorerDriver();
-				 } 
-			    else {
-				        	
-				/******** The driver is not selected  ********/
-			    		System.out.println("The Driver is not selected properly, invalid name: " + browser);
-				        return null;
-				   }
-	    
-			    /******** Clean Cookies, maxinize and declare Timeout on the Driver *******/
-			    driver.manage().deleteAllCookies();
-				driver.manage().window().maximize();
-				driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-				driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
-				driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-			    	    
-	    return driver;
+	        else if (driverType.equalsIgnoreCase("CHROME")) {
+	            System.setProperty("webdriver.chrome.driver", "resources/files/software/"+os+"/chromedriver");            
+	            return new ChromeDriver();
+	        } 
+	        
+	        /******** The driver selected is Local: Internet Explorer ********/
+	        
+	        else if (driverType.equalsIgnoreCase("INTERNET EXPLORER")) {
+	        		System.setProperty("webdriver.ie.driver", "resources/files/software/"+os+"/IEDriverServer.exe");
+	        		return new InternetExplorerDriver();
+	        	} 
+	        
+	        /******** The driver selected is Remore (SauceLabs)
+	         * If the Remote Driver is selected, the connection into SauceLabs is mandatory  ********/
+	        
+	        else if (driverType.equalsIgnoreCase("REMOTE")) {
+            return new RemoteDriver(new RemoteWebDriver(new URL( "http://" + authentication.getUsername() + ":"
+            			+ authentication.getAccessKey() + seleniumURI + "/wd/hub"), capabilities));
+
+        } else {
+        		/******** The driver is not selected  ********/
+        	
+            log.error("The Driver is not selected properly");
+            return null;
         }
-	}
+    }
+}
