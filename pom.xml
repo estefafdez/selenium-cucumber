@@ -16,43 +16,11 @@
 		<cucumber-java.version>1.2.2</cucumber-java.version>
 		<cucumber-junit.version>1.2.2</cucumber-junit.version>
 		<junit.version>4.11</junit.version>
-		<log4j.version>1.2.17</log4j.version>
-		<sauce_junit.version>2.1.23</sauce_junit.version> 
-		<saucerest.version>1.0.27</saucerest.version> 
 
     	<!-- Test Browser -->
-		<!-- This Parameters select where run the test [Firefox ,Chrome ,Internet Explorer] -->
+		<!-- This Parameters select where run the test [Remote ,Firefox ,Chrome ,Internet Explorer] -->
 		<browser>Firefox</browser>
-		<!-- Test Operative system [Linux, MacOSX, Windows]-->
-		<os>MacOSX</os>
     </properties>
-    
-    <build>
-    <resources>
-    	<resource>
-				<directory>resources</directory>
-				<includes>
-					<include>config.properties</include>
-					<include>log4j.properties</include>
-				</includes>
-			</resource>
-    </resources>
-    	<plugins>
-			<plugin>
-		    <groupId>org.apache.maven.plugins</groupId>
-		    <artifactId>maven-surefire-plugin</artifactId>
-		    <version>2.10</version>
-		    <configuration>
-		        <systemProperties>
-		            <property>
-		                <name>test.properties</name>
-		                <value>${test.properties}</value>
-		            </property>
-		        </systemProperties>
-		    </configuration>
-		</plugin>
-		</plugins>
-    </build>
 
     <dependencies>
         <!-- These are the cucumber dependencies -->
@@ -85,40 +53,6 @@
 			<artifactId>selenium-java</artifactId>
 			<version>${selenium.version}</version>
 		</dependency>
-		
-		<!-- These are the saucelabs dependencies -->
-		<dependency>
-			 <groupId>com.saucelabs</groupId>
-			 <artifactId>sauce_junit</artifactId>
-			 <version>${sauce_junit.version}</version>
-        	</dependency>
-		<dependency>
-		      <groupId>com.saucelabs</groupId>
-			  <artifactId>saucerest</artifactId>
-			  <version>${saucerest.version}</version>
-		</dependency>
-		
-		<!-- These are the log4j dependencies -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>com.sun.jmx</groupId>
-					<artifactId>jmxri</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.jdmk</groupId>
-					<artifactId>jmxtools</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.jms</groupId>
-					<artifactId>jms</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+	    
 	</dependencies>
-	
-
 </project>
