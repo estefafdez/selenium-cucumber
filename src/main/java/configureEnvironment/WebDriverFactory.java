@@ -1,11 +1,13 @@
 package configureEnvironment;
 
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+
 
 /**
  * This class select and configure the Driver according to your browser selection on the POM.
@@ -15,12 +17,16 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 public class WebDriverFactory 
 {
 	static WebDriver driver = null;
-	static String browser = null;
-	
+	static Properties prop = new Properties();
+	static String browser=null;
+
+	/**
+	 * Get the Browser from the POM
+	 */
 	public static String getBrowser()
 	{
-		browser = System.getProperty("browser"); 
-		
+	    browser = System.getProperty("browser");
+	    System.out.println(browser);
 		if(browser == null)
 			browser = "Firefox";
 		return browser;
