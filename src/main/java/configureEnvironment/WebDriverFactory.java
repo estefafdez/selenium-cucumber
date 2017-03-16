@@ -1,5 +1,7 @@
 package configureEnvironment;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -17,7 +19,10 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 public class WebDriverFactory 
 {
 	static WebDriver driver = null;
-	static Properties prop = new Properties();
+	static Properties prop = new Properties();   
+	static InputStream in = WebDriverFactory.class.getResourceAsStream("src/test/resources/test.properties"); 
+	
+	
 	static String browser=null;
 
 	/**
@@ -25,8 +30,14 @@ public class WebDriverFactory
 	 */
 	public static String getBrowser()
 	{
-	    browser = System.getProperty("browser");
-	    System.out.println(browser);
+		try {
+			prop.load(in); //TODO: Investigate why is not working. 
+		    browser = System.getProperty("browser");
+		    System.out.println(browser);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		if(browser == null)
 			browser = "Firefox";
 		return browser;
