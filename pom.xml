@@ -22,6 +22,9 @@
     	<!-- Test Browser -->
 		<!-- This Parameters select where run the test [Remote ,Firefox ,Chrome ,Internet Explorer] -->
 		<browser>Firefox</browser>
+		<!-- Test Operative system [linux, mac, windows]-->
+		<os>windows</os>
+		
     </properties>
 
     <dependencies>

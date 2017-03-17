@@ -2,6 +2,8 @@ package stepDefintions;
 
 import java.io.IOException;
 
+import org.openqa.selenium.WebDriver;
+
 import configureEnvironment.CreateDriver;
 import cucumber.api.java.en.Then;
 
@@ -10,9 +12,11 @@ import cucumber.api.java.en.Then;
  * More steps examples here: https://github.com/selenium-cucumber/selenium-cucumber-java/blob/master/doc/canned_steps.md
  * @author estefafdez
  */
-public class StepDefinitions implements CreateDriver
+public class StepDefinitions
 {
-	//Navigation Steps
+		WebDriver driver = CreateDriver.initConfig();
+		
+		//Navigation Steps
 	
 		//Step to navigate to specified URL
 		@Then("^I navigate to \"([^\"]*)\"$")
