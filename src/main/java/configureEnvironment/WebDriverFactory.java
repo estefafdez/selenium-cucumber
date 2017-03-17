@@ -47,6 +47,7 @@ public class WebDriverFactory
 	 public  static WebDriver CreateNewWebDriver(String browser){		
 				/******** The driver selected is  Firefox  ********/  	
 			    if (browser.equalsIgnoreCase("FIREFOX")) {
+			    	System.setProperty("webdriver.gecko.driver", "resources/files/software/windows/geckodriver.exe");
 			    		driver = new FirefoxDriver();
 			    }
 					        
