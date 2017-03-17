@@ -20,28 +20,28 @@ public class StepDefinitions
 	
 		//Step to navigate to specified URL
 		@Then("^I navigate to \"([^\"]*)\"$")
-		public void navigate_to(String url)
+		public void navigateTo(String url)
 		{
 		    driver.navigate().to(url);
 		}
 			
 		//Step to navigate forward
 		@Then("^I navigate forward")
-		public void navigate_forward()
+		public void navigateForward()
 		{
 		    driver.navigate().forward();
 		}
 			
 		//Step to navigate backward
 		@Then("^I navigate back")
-		public void navigate_back()
+		public void navigateBack()
 		{
 		    driver.navigate().back();
 		}
 		
 		// steps to refresh page
 		@Then("^I refresh page$")
-		public void refresh_page()
+		public void refreshPage()
 		{
 		    driver.navigate().refresh();
 		}
@@ -50,14 +50,14 @@ public class StepDefinitions
 		
 		//Switch to new window
 		@Then("^I switch to new window$")
-		public void switch_to_new_window()
+		public void switchNewWindow()
 		{
 			
 		}
 			 
 		//Switch to old window
 		@Then("^I switch to previous window$")
-		public void switch_to_old_window()
+		public void switchPreviousWindows()
 		{
 			
 		}
