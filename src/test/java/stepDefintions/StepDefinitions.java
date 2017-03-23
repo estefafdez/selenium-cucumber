@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 
-import configureEnvironment.CreateDriver;
 import cucumber.api.java.en.Then;
 
 /**
@@ -14,8 +13,8 @@ import cucumber.api.java.en.Then;
  */
 public class StepDefinitions
 {
-		WebDriver driver = CreateDriver.initConfig();
-		
+		WebDriver driver = Hooks.driver;
+	
 		//Navigation Steps
 	
 		//Step to navigate to specified URL

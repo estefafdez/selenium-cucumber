@@ -12,5 +12,5 @@ import cucumber.api.junit.Cucumber;
 		features = "classpath:features"
 )
 
-public class CucumberTests {
+public class RunCukesTest{
 }
