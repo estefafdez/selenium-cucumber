@@ -23,14 +23,18 @@ On the pom.xml file you can choose between:
 You just need to change the following lines:
 
 ```bash
-	<!-- Test Browser -->
-		<!-- This Parameters select where run the test [Remote ,Firefox ,Chrome ,Internet Explorer] -->
-		<browser>YOUR_BROWSER</browser>
-		<!-- Test Operative system [linux, mac, windows]-->
-		<os>YOUR_OS</os>
-		<!-- Log Mode section -->
-		<!-- Parameter for logger level use in this order to include the right information [ALL > DEBUG > INFO > WARN > ERROR > FATAL > OFF]-->
-		<log.level>YOUR_LOG_MODE</log.level>
+<!-- Test Browser -->
+<!-- This Parameters select where run the test 
+[Remote ,Firefox ,Chrome ,Internet Explorer] -->
+<browser>YOUR_BROWSER</browser>
+
+<!-- Test Operative system [linux, mac, windows]-->
+<os>YOUR_OS</os>
+
+<!-- Log Mode section -->
+<!-- Parameter for logger level use in this order to include the right information 
+[ALL > DEBUG > INFO > WARN > ERROR > FATAL > OFF]-->
+<log.level>YOUR_LOG_MODE</log.level>
 ```
 ## 3. Step Definition By Action. 
 
