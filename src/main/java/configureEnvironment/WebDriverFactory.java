@@ -1,5 +1,6 @@
 package configureEnvironment;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -15,6 +16,9 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
  */
 public class WebDriverFactory {
 	private static WebDriver driver   = null;	
+    /******** Log Attribute ********/
+    private static Logger log = Logger.getLogger(WebDriverFactory.class);
+	
 		
 	 public static WebDriver CreateNewWebDriver(String browser, String os){		
 			
@@ -48,7 +52,7 @@ public class WebDriverFactory {
 	     } 
 		 /******** The driver is not selected  ********/
 	     else {
-	    	 System.out.println("The Driver is not selected properly, invalid name: " + browser + ", " + os);
+	    	 log.error("The Driver is not selected properly, invalid name: " + browser + ", " + os);
 			 return null;
 		 }
 			    	    
