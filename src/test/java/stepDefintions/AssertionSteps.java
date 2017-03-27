@@ -1,5 +1,7 @@
 package stepDefintions;
 
+import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import cucumber.api.java.en.Then;
@@ -12,20 +14,27 @@ import cucumber.api.java.en.Then;
 public class AssertionSteps {
 	WebDriver driver;
 	
+	/******** Log Attribute ********/
+    private static Logger log = Logger.getLogger(AssertionSteps.class);
+	
 	public AssertionSteps(){
 		 driver= Hooks.driver;
 	}
-	
-	/** page title checking
-	 * @param present : 
-	 * @param title :
-	 */
+
+	/** Check if the page title (is/is not) the same */
 	@Then("^I should\\s*((?:not)?)\\s+see page title as \"(.+)\"$")
-	public void checkTitle(String present,String title)
+	public void checkPageTitle(String present,String title)
 	{
-		
+		String pageTitle = driver.getTitle();
+		if(present.equals("see")){
+			Assert.assertTrue("The title is not present", pageTitle.equals(title));			
+		}
+		else if(present.equals("not see")){
+			Assert.assertFalse("The title is present", pageTitle.equals(title));		
+		}
 	}
 	
+	/** Check if the page title (have/not have) a partial text */
 	// step to check element partial text
 	@Then("^I should\\s*((?:not)?)\\s+see page title having partial text as \"(.*?)\"$")
 	public void checkPartialText(String present, String partialTextTitle)
@@ -120,7 +129,6 @@ public class AssertionSteps {
 	{
 		driver.close();
 	}
-
 	
 
 }
