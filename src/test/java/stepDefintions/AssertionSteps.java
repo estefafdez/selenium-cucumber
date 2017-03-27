@@ -2,8 +2,11 @@ package stepDefintions;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import cucumber.api.java.en.Then;
 
 /**
@@ -13,6 +16,8 @@ import cucumber.api.java.en.Then;
  */
 public class AssertionSteps {
 	WebDriver driver;
+	WebDriverWait w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
+	public static final int EXPLICIT_TIMEOUT = 15; 
 	
 	/******** Log Attribute ********/
     private static Logger log = Logger.getLogger(AssertionSteps.class);
@@ -27,9 +32,11 @@ public class AssertionSteps {
 	{
 		String pageTitle = driver.getTitle();
 		if(present.equals("see")){
+			log.debug("The title should be present");
 			Assert.assertTrue("The title is not present", pageTitle.equals(title));			
 		}
 		else if(present.equals("not see")){
+			log.debug("The title should not be present");
 			Assert.assertFalse("The title is present", pageTitle.equals(title));		
 		}
 	}
@@ -40,78 +47,82 @@ public class AssertionSteps {
 	{
 		String pageTitle = driver.getTitle();
 		if(present.equals("see")){
+			log.debug("The partial text on the title should be present");
 			Assert.assertTrue("The partial title is not present", pageTitle.contains(partialTextTitle));			
 		}
 		else if(present.equals("not see")){
+			log.debug("The partial text on the title should not be present");
 			Assert.assertFalse("The partial title is present", pageTitle.contains(partialTextTitle));		
 		}
 	}
 		
-	// step to check element text
+	/** Check if an element (should/should not) a certain text */
 	@Then("^element having (.+) \"([^\"]*)\" should\\s*((?:not)?)\\s+have text as \"(.*?)\"$")
-	public void checkElementText(String type, String accessName,String present,String value) throws Exception 
+	public void checkElementText(String type, By selector,String present,String text) throws Exception 
 	{
-
+		if(present.equals("should")){
+			boolean element = w.until(ExpectedConditions.textToBePresentInElementLocated(selector,  text));
+			log.debug("The element with the text" + text +" should be present");
+			Assert.assertTrue("The element by " + selector + "with the text " + text + "is not present", element);
+		}
+		else if(present.equals("should not")){
+			boolean element = w.until(ExpectedConditions.textToBePresentInElementLocated(selector,  text));
+			log.debug("The element with the text" + text +" should not be present");
+			Assert.assertFalse("The element by " + selector + "with the text " + text + "is present", element);		
+		}
 	}	
-		
-	//step to check element partial text
-	@Then("^element having (.+) \"([^\"]*)\" should\\s*((?:not)?)\\s+have partial text as \"(.*?)\"$")
-	public void checkElementPartialText(String type,String accessName,String present,String value) throws Exception
-	{
-		
-	}
 		  	
 	// step to check attribute value
 	@Then("^element having (.+) \"([^\"]*)\" should\\s*((?:not)?)\\s+have attribute \"(.*?)\" with value \"(.*?)\"$") 
-	public void checkElementAtribute(String type,String accessName,String present,String attrb,String value) throws Exception
+	public void checkElementAtribute(String type,String selector,String present,String attrb,String value) throws Exception
 	{
 	
 	}
 		 
 	// step to check element enabled or not
 	@Then("^element having (.+) \"([^\"]*)\" should\\s*((?:not)?)\\s+be (enabled|disabled)$")
-	public void checkElementEnable(String type, String accessName,String present,String state) throws Exception
+	public void checkElementEnable(String type, String selector,String present,String state) throws Exception
 	{
 	}
 		
 	//step to check element present or not
 	@Then("^element having (.+) \"(.*?)\" should\\s*((?:not)?)\\s+be present$") 
-	public void checkElementPresent(String type,String accessName,String present) throws Exception
+	public void checkElementPresent(String type,By selector,String present) throws Exception
 	{
 
 	}
 	
 	//step to assert checkbox is checked or unchecked
 	@Then("^checkbox having (.+) \"(.*?)\" should be (checked|unchecked)$")
-	public void checkCheckboxChecked(String type, String accessName,String state) throws Exception
+	public void checkCheckboxChecked(String type, String selector,String state) throws Exception
 	{
 
 	}
 		  
 	//steps to assert radio button checked or unchecked
 	@Then("^radio button having (.+) \"(.*?)\" should be (selected|unselected)$") 
-	public void checkRadioButtonSelected(String type,String accessName,String state) throws Exception
+	public void checkRadioButtonSelected(String type,String selector,String state) throws Exception
 	{
 
 	}
 		 
 	//steps to assert option by text from radio button group selected/unselected
 	@Then("^option \"(.*?)\" by (.+) from radio button group having (.+) \"(.*?)\" should be (selected|unselected)$")
-	public void checkOptionFromRadioButtonSelected(String option,String attrb,String type,String accessName,String state) throws Exception
+	public void checkOptionFromRadioButtonSelected(String option,String attrb,String type,String selector,String state) throws Exception
 	{
 
 	}
 		
 	//steps to check link presence
 	@Then("^link having text \"(.*?)\" should\\s*((?:not)?)\\s+be present$") 
-	public void checkElementPresent(String accessName,String present) 
+	public void checkElementPresent(String selector,String present) 
 	{
 	
 	}
 		  
 	//steps to check partial link presence
 	@Then("^link having partial text \"(.*?)\" should\\s*((?:not)?)\\s+be present$") 
-	public void checkPartialElementPresent(String accessName,String present) 
+	public void checkPartialElementPresent(String selector,String present) 
 	{
 	}
 		
@@ -123,7 +134,7 @@ public class AssertionSteps {
 		
 	// step to select dropdown list
 	@Then("^option \"(.*?)\" by (.+) from dropdown having (.+) \"(.*?)\" should be (selected|unselected)$")
-	public void checkDropdownOptionSelected(String option,String by,String type,String accessName,String state) throws Exception
+	public void checkDropdownOptionSelected(String option,String by,String type,String selector,String state) throws Exception
 	{
 	
 	}
