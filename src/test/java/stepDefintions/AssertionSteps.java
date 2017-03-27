@@ -35,11 +35,16 @@ public class AssertionSteps {
 	}
 	
 	/** Check if the page title (have/not have) a partial text */
-	// step to check element partial text
 	@Then("^I should\\s*((?:not)?)\\s+see page title having partial text as \"(.*?)\"$")
 	public void checkPartialText(String present, String partialTextTitle)
 	{
-	
+		String pageTitle = driver.getTitle();
+		if(present.equals("see")){
+			Assert.assertTrue("The partial title is not present", pageTitle.contains(partialTextTitle));			
+		}
+		else if(present.equals("not see")){
+			Assert.assertFalse("The partial title is present", pageTitle.contains(partialTextTitle));		
+		}
 	}
 		
 	// step to check element text
