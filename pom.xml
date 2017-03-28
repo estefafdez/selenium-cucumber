@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-		 <groupId>SeleniumCucumberJava</groupId>
+    	<modelVersion>4.0.0</modelVersion>
+		<groupId>SeleniumCucumberJava</groupId>
 	    <artifactId>com.selenium.cucumber</artifactId>
-	    <version>0.0.1</version>
+	    <version>0.2</version>
     
     <properties>
     	<!-- Encoding section -->
@@ -19,7 +19,9 @@
 		<log4j.version>1.2.17</log4j.version>
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version> 
-		 <httpclient.version>4.5.2</httpclient.version>
+		<httpclient.version>4.5.2</httpclient.version>
+		<ant.version>1.2</ant.version>
+		 
 
     	<!-- Test Browser -->
 		<!-- This Parameters select where run the test [Remote ,Firefox ,Chrome ,Internet Explorer] -->
@@ -85,10 +87,11 @@
 			</exclusions>
 		</dependency>
 
+		<!-- These are the apache ant dependencies -->	
 		<dependency>
-		    <groupId>org.apache.httpcomponents</groupId>
-		    <artifactId>httpclient</artifactId>
-		    <version>${httpclient.version}</version>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant-compress</artifactId>
+			<version>${ant.version}</version>
 		</dependency>
 		    
 	</dependencies>

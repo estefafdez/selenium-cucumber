@@ -3,7 +3,6 @@ package stepDefintions;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -71,39 +70,79 @@ public class AssertionSteps {
 			Assert.assertFalse("The element by " + selector + "with the text " + text + "is present", element);		
 		}
 	}	
-		  	
-	// step to check attribute value
-	@Then("^element having (.+) \"([^\"]*)\" should\\s*((?:not)?)\\s+have attribute \"(.*?)\" with value \"(.*?)\"$") 
-	public void checkElementAtribute(String type,String selector,String present,String attrb,String value) throws Exception
-	{
-	
-	}
-		 
-	// step to check element enabled or not
+		  			 
+	/** Check if an element (should/should not) be (enabled/disabled) */
 	@Then("^element having (.+) \"([^\"]*)\" should\\s*((?:not)?)\\s+be (enabled|disabled)$")
-	public void checkElementEnable(String type, String selector,String present,String state) throws Exception
+	public void checkElementEnable(String type, By selector,String present,String state) throws Exception
 	{
+		boolean enable = driver.findElement(selector).isEnabled();
+		
+		if(present.equals("should")){			
+			log.debug("The element" + selector +" should be present");
+			if(state.equals("enabled")){
+				Assert.assertTrue("The element by " + selector + "is disabled", enable);
+			}
+			else if(state.equals("disabled")){
+				Assert.assertFalse("The element by " + selector + "is enabled", enable);
+			}
+		}
+		else if(present.equals("should not")){
+			log.debug("The element" + selector +" should not be present");
+			if(state.equals("enabled")){
+				Assert.assertTrue("The element by " + selector + "is disabled", enable);
+			}
+			else if(state.equals("disabled")){
+				Assert.assertFalse("The element by " + selector + "is enabled", enable);
+			}
+		}
 	}
 		
-	//step to check element present or not
+	/** Check if an element (should/should not) be present */
 	@Then("^element having (.+) \"(.*?)\" should\\s*((?:not)?)\\s+be present$") 
 	public void checkElementPresent(String type,By selector,String present) throws Exception
 	{
-
+		boolean isPresent = driver.findElements(selector).isEmpty();
+		
+		if(present.equals("should")){
+			log.debug("The element: " + selector +" should be present");
+			Assert.assertTrue("The element by " + selector + "is not present", isPresent);
+		}
+		else if(present.equals("should not")){
+			log.debug("The element: " + selector +" should not be present");
+			Assert.assertFalse("The element by " + selector + "is present", isPresent);		
+		}
 	}
 	
-	//step to assert checkbox is checked or unchecked
+	/** Check if an element should be (checked/unchecked) */
 	@Then("^checkbox having (.+) \"(.*?)\" should be (checked|unchecked)$")
-	public void checkCheckboxChecked(String type, String selector,String state) throws Exception
+	public void checkCheckboxChecked(String type, By selector,String state) throws Exception
 	{
-
+		boolean selected = driver.findElement(selector).isSelected();
+		
+		if(state.equals("checked")){
+			log.debug("The element: " + selector +" should be checked");
+			Assert.assertTrue("The element by " + selector + "is not checked", selected);
+		}
+		else if(state.equals("unchecked")){
+			log.debug("The element: " + selector +" should be unchecked");
+			Assert.assertFalse("The element by " + selector + "is checked", selected);		
+		}
 	}
 		  
-	//steps to assert radio button checked or unchecked
+	/** Check if an element should be (selected/unselected) */
 	@Then("^radio button having (.+) \"(.*?)\" should be (selected|unselected)$") 
-	public void checkRadioButtonSelected(String type,String selector,String state) throws Exception
+	public void checkRadioButtonSelected(String type,By selector,String state) throws Exception
 	{
-
+		boolean selected = driver.findElement(selector).isSelected();
+		
+		if(state.equals("selected")){
+			log.debug("The element: " + selector +" should be selected");
+			Assert.assertTrue("The element by " + selector + "is not selected", selected);
+		}
+		else if(state.equals("unselected")){
+			log.debug("The element: " + selector +" should be unselected");
+			Assert.assertFalse("The element by " + selector + "is selected", selected);		
+		}
 	}
 		 
 	//steps to assert option by text from radio button group selected/unselected
