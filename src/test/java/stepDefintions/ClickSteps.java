@@ -24,10 +24,16 @@ public class ClickSteps {
 
 	/** Click on a WebElement */
 	@Then("^I click on element having (.+) \"(.*?)\"$") 
-	public void click(String type,By selector) throws Exception
+	public void click(String type, String selector) throws Exception
 	{
-		driver.findElement(selector).click();
-		log.info("Clicking on element by "+type+": " + selector);
+		if(type.equals("xpath")){
+			 driver.findElement(By.xpath(selector)).click();
+			 log.info("Clicking on element by xpath: " + selector);
+		}
+		else if(type.equals("cssSelector")){
+			driver.findElement(By.cssSelector(selector)).click();
+			log.info("Clicking on element by cssSelector: " + selector);
+		}
 	}
  
 	/** Double click on a WebElement */

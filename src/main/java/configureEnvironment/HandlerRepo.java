@@ -10,6 +10,8 @@ import java.net.URL;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import org.apache.log4j.Logger;
+
 
 public class HandlerRepo {
 	
@@ -19,6 +21,8 @@ public class HandlerRepo {
 	 */
 
     private static final int BUFFER_SIZE = 4096;
+    /******** Log Attribute ********/
+    private static Logger log = Logger.getLogger(HandlerRepo.class);
 
     /**
      * Downloads a file from a URL
@@ -47,13 +51,13 @@ public class HandlerRepo {
                 }
             } else {
                 // extracts file name from URL
-                fileName = fileURL.substring(fileURL.lastIndexOf("/") + 1, fileURL.length());
+                fileName = fileURL.substring(fileURL.lastIndexOf('/') + 1, fileURL.length());
             }
 
-            System.out.println("Content-Type = " + contentType);
-            System.out.println("Content-Disposition = " + disposition);
-            System.out.println("Content-Length = " + contentLength);
-            System.out.println("fileName = " + fileName);
+            log.info("Content-Type = " + contentType);
+           log.info("Content-Disposition = " + disposition);
+           log.info("Content-Length = " + contentLength);
+           log.info("fileName = " + fileName);
 
             // opens input stream from the HTTP connection
             InputStream inputStream = httpConn.getInputStream();
@@ -71,9 +75,9 @@ public class HandlerRepo {
             outputStream.close();
             inputStream.close();
 
-            System.out.println("File downloaded");
+            log.info("File downloaded");
         } else {
-            System.out.println("No file to download. Server replied HTTP code: " + responseCode);
+        	 log.info("No file to download. Server replied HTTP code: " + responseCode);
         }
         httpConn.disconnect();
     }
@@ -106,7 +110,7 @@ public class HandlerRepo {
                 String fileName = ze.getName();
                 File newFile = new File(outputFolder + File.separator + fileName);
 
-                System.out.println("file unzip : " + newFile.getAbsoluteFile());
+                log.info("file unzip : " + newFile.getAbsoluteFile());
 
                 // create all non exists folders
                 // else you will hit FileNotFoundException for compressed folder
@@ -127,7 +131,7 @@ public class HandlerRepo {
             zis.closeEntry();
             zis.close();
 
-            System.out.println("Done");
+            log.info("Done");
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -153,9 +157,9 @@ public class HandlerRepo {
             File file = new File(zipFile);
 
             if (file.delete()) {
-                System.out.println(file.getName() + " is deleted!");
+            	 log.info(file.getName() + " is deleted!");
             } else {
-                System.out.println("Delete operation is failed.");
+            	 log.info("Delete operation is failed.");
             }
 
         } catch (Exception e) {

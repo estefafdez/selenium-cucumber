@@ -4,8 +4,7 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import cucumber.api.java.en.Then;
 
 /**
@@ -15,7 +14,7 @@ import cucumber.api.java.en.Then;
  */
 public class AssertionSteps {
 	WebDriver driver;
-	WebDriverWait w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
+	//WebDriverWait w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
 	public static final int EXPLICIT_TIMEOUT = 15; 
 	
 	/******** Log Attribute ********/
@@ -60,14 +59,14 @@ public class AssertionSteps {
 	public void checkElementText(String type, By selector,String present,String text) throws Exception 
 	{
 		if(present.equals("should")){
-			boolean element = w.until(ExpectedConditions.textToBePresentInElementLocated(selector,  text));
+			//boolean element = w.until(ExpectedConditions.textToBePresentInElementLocated(selector,  text));
 			log.debug("The element with the text" + text +" should be present");
-			Assert.assertTrue("The element by " + selector + "with the text " + text + "is not present", element);
+			//Assert.assertTrue("The element by " + selector + "with the text " + text + "is not present", element);
 		}
 		else if(present.equals("should not")){
-			boolean element = w.until(ExpectedConditions.textToBePresentInElementLocated(selector,  text));
+			//boolean element = w.until(ExpectedConditions.textToBePresentInElementLocated(selector,  text));
 			log.debug("The element with the text" + text +" should not be present");
-			Assert.assertFalse("The element by " + selector + "with the text " + text + "is present", element);		
+			//Assert.assertFalse("The element by " + selector + "with the text " + text + "is present", element);		
 		}
 	}	
 		  			 

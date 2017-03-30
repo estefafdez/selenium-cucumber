@@ -17,40 +17,25 @@
 		<cucumber-junit.version>1.2.2</cucumber-junit.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version> 
 		<httpclient.version>4.5.2</httpclient.version>
 		<ant.version>1.2</ant.version>
-		<!-- <sonar.version>4.5.4</sonar.version> -->
+		<sonar-maven-plugin.version>4.5.4</sonar-maven-plugin.version>
+		<jsoup.version>1.10.2</jsoup.version>
 		 
 
     	<!-- Test Browser -->
 		<!-- This Parameters select where run the test [Remote ,Firefox ,Chrome ,Internet Explorer] -->
 		<browser>Firefox</browser>
 		<!-- Test Operative system [linux, mac, windows]-->
-		<os>windows</os>
+		<os>mac</os>
 		<!-- Log Mode section -->
 		<!-- Parameter for logger level use in this order to include the right information [ALL > DEBUG > INFO > WARN > ERROR > FATAL > OFF]-->
 		<log.level>INFO</log.level>
 		
     </properties>
  	
-	<profiles>
-    	<!-- Sonar profile -->
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <!-- Optional URL to server. Default value is http://localhost:9000 -->
-                <sonar.host.url>
-                 http://pwd10_0_26_3-9000.host2.labs.play-with-docker.com:9000
-                </sonar.host.url>
-            </properties>
-        </profile>
-    </profiles>
-
     <dependencies>
         <!-- These are the cucumber dependencies -->
         <dependency>
@@ -111,21 +96,42 @@
 			<version>${ant.version}</version>
 		</dependency>
 		
-		<!-- These are the sonarqube dependencies -->
-		<!-- <dependency>
+		<!-- These are the sonar-maven-plugin dependencies -->
+		<dependency>
 			<groupId>org.codehaus.sonar</groupId>
 			<artifactId>sonar-maven-plugin</artifactId>
-			<version>${sonar.version}</version>
-		</dependency> -->
-		    
+			<version>${sonar-maven-plugin.version}</version>
+		</dependency>
+		
+		<!-- These are the jsoup HTML parser library @ http://jsoup.org/ dependencies -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>${jsoup.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<!-- Build phase -->
 	<build>
+			<directory>${project.basedir}/target</directory>
+			<outputDirectory>${project.build.directory}/classes</outputDirectory>
+			<finalName>${project.artifactId}-${project.version}</finalName>
+			<testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
+			<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+			<testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+	
+		<!-- Resources -->
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+			</resource>
+		</resources>
+
 		<!-- Filtering resources -->
 		<testResources>
 			<testResource>
-				<directory>src/test/resources</directory>
+				<directory>${project.basedir}/src/test/resources</directory>
 				<filtering>true</filtering>
 			</testResource>
 		</testResources>
@@ -133,6 +139,8 @@
 		<!-- Plugins section -->
 		<pluginManagement>
 		    <plugins>
+		    
+		    <!-- Maven Surefire Plugin -->
 		      <plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
@@ -141,6 +149,8 @@
 					 	<encoding>UTF-8</encoding>
 					</configuration>
 			</plugin>
+			
+			<!-- Maven Compiler Plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -150,7 +160,30 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+			
+			<!-- Sonar Maven Plugin -->
+			<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>3.2</version>
+				</plugin>
 		    </plugins>
 		  </pluginManagement>
 	</build>  
+	
+	<!-- Profile section -->
+	<profiles>
+		<profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- Optional URL to server. Default value is http://localhost:9000 -->
+				<sonar.host.url>
+					http://pwd10_0_29_3-9000.host2.host2.host2.labs.play-with-docker.com
+				</sonar.host.url>
+			</properties>
+		</profile>
+	</profiles>
 </project>
