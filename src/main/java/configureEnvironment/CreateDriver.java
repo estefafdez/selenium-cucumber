@@ -17,7 +17,6 @@ import org.openqa.selenium.WebDriver;
  */
 public class CreateDriver {
     private static String browser, os;
-    public static ThreadLocal<WebDriver> drivers;
     private static String logLevel;
     private static String properties = "test.properties";
     private static Properties prop = new Properties();

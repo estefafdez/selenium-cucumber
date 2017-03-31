@@ -35,6 +35,7 @@ public class HandlerRepo {
         URL url = new URL(fileURL);
         HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
         int responseCode = httpConn.getResponseCode();
+        int bytesRead;
 
         // always check HTTP response code first
         if (responseCode == HttpURLConnection.HTTP_OK) {
@@ -66,11 +67,10 @@ public class HandlerRepo {
             // opens an output stream to save into file
             FileOutputStream outputStream = new FileOutputStream(saveFilePath);
 
-            int bytesRead = -1;
             byte[] buffer = new byte[BUFFER_SIZE];
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, bytesRead);
-            }
+            while (( bytesRead = inputStream.read(buffer)) != -1) {
+            	outputStream.write(buffer, 0, bytesRead);
+            	}
 
             outputStream.close();
             inputStream.close();
@@ -133,8 +133,8 @@ public class HandlerRepo {
 
             log.info("Done");
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+        	log.error("unZipIt Error", e);
         }
     }
     
@@ -163,8 +163,7 @@ public class HandlerRepo {
             }
 
         } catch (Exception e) {
-
-            e.printStackTrace();
+        	log.error("deleteZip Error", e);
 
         }
     }
