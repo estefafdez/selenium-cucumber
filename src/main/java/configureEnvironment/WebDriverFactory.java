@@ -23,8 +23,8 @@ public class WebDriverFactory {
 	 public static WebDriver CreateNewWebDriver(String browser, String os){		
 			
 		 /******** The driver selected is Local: Firefox  ********/    	
-		 if (browser.equalsIgnoreCase("FIREFOX")) {
-			 if(os.equalsIgnoreCase("WINDOWS")){
+		 if ("FIREFOX".equalsIgnoreCase(browser)) {
+			 if("WINDOWS".equalsIgnoreCase(os)){
 				 System.setProperty("webdriver.gecko.driver", "resources/files/software/"+os+"/geckodriver.exe");    
 			 }
 			 else{
@@ -35,8 +35,8 @@ public class WebDriverFactory {
 					        
 		 /******** The driver selected is Chrome  ********/
 					   
-	     else if (browser.equalsIgnoreCase("CHROME")) {
-	    	 if(os.equalsIgnoreCase("WINDOWS")){
+	     else if ("CHROME".equalsIgnoreCase(browser)) {
+	    	 if("WINDOWS".equalsIgnoreCase(os)){
 	    		 System.setProperty("webdriver.chrome.driver", "resources/files/software/"+os+"/chromedriver.exe");            
 	    	 }
 	    	 else{
@@ -46,7 +46,7 @@ public class WebDriverFactory {
 	     }  
 					        
 		 /******** The driver selected is Internet Explorer ********/        
-	     else if (browser.equalsIgnoreCase("INTERNET EXPLORER")) {
+	     else if ("INTERNET EXPLORER".equalsIgnoreCase(browser)) {
 	    	 System.setProperty("webdriver.ie.driver", "resources/files/software/"+os+"/IEDriverServer.exe");
 			 driver = new InternetExplorerDriver();
 	     } 

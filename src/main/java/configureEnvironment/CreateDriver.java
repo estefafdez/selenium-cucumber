@@ -39,7 +39,7 @@ public class CreateDriver {
             logLevel = prop.getProperty("logLevel");
             
         } catch (IOException e) {
-            e.printStackTrace();
+        	log.error("initConfig Error", e);
         }
         
         /******** POM Information ********/

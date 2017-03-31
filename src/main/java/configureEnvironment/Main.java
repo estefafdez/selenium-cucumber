@@ -2,11 +2,15 @@ package configureEnvironment;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+
 /**
  * This class contains methods to manage the latest release of the Geckodriver, ChromeDriver and IEDriver.
  * @author ffgonzalez
  */
 public class Main {
+	 /******** Log Attribute ********/
+    private static Logger log = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
 
@@ -24,7 +28,7 @@ public class Main {
             HandlerRepo.unZipIt(RESOURCE_PATH + NAME_DRIVER, RESOURCE_PATH);
             HandlerRepo.deleteZip(RESOURCE_PATH + NAME_DRIVER);
         } catch (IOException e) {
-            e.printStackTrace();
+        	log.error("manageDriver Error", e);
         }
 
     }
