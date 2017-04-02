@@ -57,20 +57,20 @@ https://github.com/selenium-cucumber/selenium-cucumber-java/blob/master/doc/cann
 
 ## 4. SonarQube included.
 
-In order to maintain the quality code, we include SonarQube on the project to improve and maintain the quality.
+In order to maintain the quality of your code and your project, we include SonarQube on this repository.
 You can install in two minutes using the SonarQube tutorial available here: 
 
 ```bash
 https://docs.sonarqube.org/display/SONAR/Get+Started+in+Two+Minutes
 ```
 
-Once the SonarQube platform has been installed, you're ready to install an analyzer your project. First,  run your local server:
+Once the SonarQube platform has been installed, you're ready to install an analyze your project. First,  run your local server:
 
 ```bash
 http://localhost:9000/about
 ```
 
-And  then, run the project in order to check the quality of your project:
+And  then, run the project in order to check the code quality:
 
 ```bash
 mvn clean verify sonar:sonar
