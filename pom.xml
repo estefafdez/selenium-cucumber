@@ -37,7 +37,7 @@
 		<!-- This Parameters select where run the test [Remote ,Firefox ,Chrome ,Internet Explorer] -->
 		<browser>Firefox</browser>
 		<!-- Test Operative system [linux, mac, windows]-->
-		<os>windows</os>
+		<os>mac</os>
 		<!-- Log Mode section -->
 		<!-- Parameter for logger level use in this order to include the right information [ALL > DEBUG > INFO > WARN > ERROR > FATAL > OFF]-->
 		<log.level>INFO</log.level>
@@ -189,7 +189,7 @@
 			<properties>
 				<!-- Optional URL to server. Default value is http://localhost:9000 -->
 				<sonar.host.url>
-					http://pwd10_0_51_3-9000.host3.labs.play-with-docker.com
+					http://localhost:9000/about
 				</sonar.host.url>
 			</properties>
 		</profile>

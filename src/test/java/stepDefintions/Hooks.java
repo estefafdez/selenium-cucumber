@@ -14,7 +14,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
 public class Hooks {
-	static WebDriver driver;
+	public static WebDriver driver;
 	Logger log = Logger.getLogger(Hooks.class);
 
 	 @Before
