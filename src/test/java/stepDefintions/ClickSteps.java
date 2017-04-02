@@ -3,10 +3,8 @@ package stepDefintions;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import WebElements.HomePageElements;
 import cucumber.api.java.en.Then;
 
 /**
@@ -26,18 +24,16 @@ public class ClickSteps {
 
 	/** Click on a WebElement */
 	@Then("^I click on element having (.+) \"(.*?)\"$") 
-	public void click(String type, WebElement selector) throws Exception
+	public void click(String type, String selector) throws Exception
 	{
-
-		
-//		if(type.equals("xpath")){
-//			 driver.findElement(By.xpath(selector)).click();
-//			 log.info("Clicking on element by xpath: " + selector);
-//		}
-//		else if(type.equals("cssSelector")){
-//			driver.findElement(By.cssSelector(selector)).click();
-//			log.info("Clicking on element by cssSelector: " + selector);
-//		}
+		if(type.equals("xpath")){
+			 driver.findElement(By.xpath(selector)).click();
+			 log.info("Clicking on element by xpath: " + selector);
+		}
+		else if(type.equals("cssSelector")){
+			driver.findElement(By.cssSelector(selector)).click();
+			log.info("Clicking on element by cssSelector: " + selector);
+		}
 	}
  
 	/** Double click on a WebElement */
