@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 
 
 /**
- * Custom interface for configure  and create the webdriver.
+ * Custom class to configure  and create the webdriver.
  * @author estefafdez
  * @author ffgonzalez
  *
