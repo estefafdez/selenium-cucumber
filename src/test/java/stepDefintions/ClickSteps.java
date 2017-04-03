@@ -26,6 +26,8 @@ public class ClickSteps {
 	@Then("^I click on element having (.+) \"(.*?)\"$") 
 	public void click(String type, String selector) throws Exception
 	{
+		//driver.findElement(WebElementsUI.ENGLISH_FLAG);
+		
 		if(type.equals("xpath")){
 			 driver.findElement(By.xpath(selector)).click();
 			 log.info("Clicking on element by xpath: " + selector);
