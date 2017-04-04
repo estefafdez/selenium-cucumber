@@ -4,6 +4,10 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.selenium.configure.environment.PropertiesHandler;
 
 import cucumber.api.java.en.Then;
 
@@ -15,6 +19,7 @@ import cucumber.api.java.en.Then;
 public class AssertionSteps {
 	WebDriver driver;
 	public static final int EXPLICIT_TIMEOUT = 15; 
+	WebDriverWait w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
 	
 	/******** Log Attribute ********/
     private static Logger log = Logger.getLogger(AssertionSteps.class);
@@ -40,7 +45,7 @@ public class AssertionSteps {
 	
 	/** Check if the page title (have/not have) a partial text */
 	@Then("^I should\\s*((?:not)?)\\s+see page title having partial text as \"(.*?)\"$")
-	public void checkPartialText(String present, String partialTextTitle)
+	public void checkTitlePartialText(String present, String partialTextTitle)
 	{
 		String pageTitle = driver.getTitle();
 		if(present.equals("see")){
@@ -55,17 +60,18 @@ public class AssertionSteps {
 		
 	/** Check if an element (should/should not) a certain text */
 	@Then("^element having (.+) \"([^\"]*)\" should\\s*((?:not)?)\\s+have text as \"(.*?)\"$")
-	public void checkElementText(String type, By selector,String present,String text) throws Exception 
+	public void checkElementText(String type, String key,String present,String text) throws Exception 
 	{
-		if(present.equals("should")){
-			//boolean element = w.until(ExpectedConditions.textToBePresentInElementLocated(selector,  text));
-			log.debug("The element with the text" + text +" should be present");
-			//Assert.assertTrue("The element by " + selector + "with the text " + text + "is not present", element);
+		By element = PropertiesHandler.getCompleteElement(type, key);
+		boolean textElement = w.until(ExpectedConditions.textToBePresentInElementLocated(element,  text));
+		
+		if(present.equals("should")){			
+			log.debug("The element: "+ element +"with the text" + text +" should be present");
+			Assert.assertTrue("The element by " + element + "with the text " + text + "is not present", textElement);
 		}
 		else if(present.equals("should not")){
-			//boolean element = w.until(ExpectedConditions.textToBePresentInElementLocated(selector,  text));
-			log.debug("The element with the text" + text +" should not be present");
-			//Assert.assertFalse("The element by " + selector + "with the text " + text + "is present", element);		
+			log.debug("The element: "+ element +"with the text" + text +" should not be present");
+			Assert.assertFalse("The element by " + element + "with the text " + text + "is present", textElement);
 		}
 	}	
 		  			 
@@ -73,6 +79,7 @@ public class AssertionSteps {
 	@Then("^element having (.+) \"([^\"]*)\" should\\s*((?:not)?)\\s+be (enabled|disabled)$")
 	public void checkElementEnable(String type, By selector,String present,String state) throws Exception
 	{
+		//TODO: Refactor with key
 		boolean enable = driver.findElement(selector).isEnabled();
 		
 		if(present.equals("should")){			
@@ -99,6 +106,7 @@ public class AssertionSteps {
 	@Then("^element having (.+) \"(.*?)\" should\\s*((?:not)?)\\s+be present$") 
 	public void checkElementPresent(String type,By selector,String present) throws Exception
 	{
+		//TODO: Refactor with key
 		boolean isPresent = driver.findElements(selector).isEmpty();
 		
 		if(present.equals("should")){
@@ -115,6 +123,7 @@ public class AssertionSteps {
 	@Then("^checkbox having (.+) \"(.*?)\" should be (checked|unchecked)$")
 	public void checkCheckboxChecked(String type, By selector,String state) throws Exception
 	{
+		//TODO: Refactor with key
 		boolean selected = driver.findElement(selector).isSelected();
 		
 		if(state.equals("checked")){
@@ -131,6 +140,7 @@ public class AssertionSteps {
 	@Then("^radio button having (.+) \"(.*?)\" should be (selected|unselected)$") 
 	public void checkRadioButtonSelected(String type,By selector,String state) throws Exception
 	{
+		//TODO: Refactor with key
 		boolean selected = driver.findElement(selector).isSelected();
 		
 		if(state.equals("selected")){
