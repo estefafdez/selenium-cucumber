@@ -1,4 +1,4 @@
-package com.selenium.configure_environment;
+package com.selenium.configure.environment;
 
 import java.io.File;
 import java.io.FileInputStream;

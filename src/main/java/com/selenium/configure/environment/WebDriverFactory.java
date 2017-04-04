@@ -1,4 +1,4 @@
-package com.selenium.configure_environment;
+package com.selenium.configure.environment;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -14,14 +14,14 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
  * @aurhor ffgonzalez
  *
  */
-public class WebDriverFactory {
-	private static WebDriver driver   = null;	
+public class WebDriverFactory {	
 	static String resourceFolder="resources/files/software/";
     /******** Log Attribute ********/
     private static Logger log = Logger.getLogger(WebDriverFactory.class);
 	
 		
-	 public static WebDriver CreateNewWebDriver(String browser, String os){		
+	 public static WebDriver createNewWebDriver(String browser, String os){	
+		 WebDriver driver;
 			
 		 /******** The driver selected is Local: Firefox  ********/    	
 		 if ("FIREFOX".equalsIgnoreCase(browser)) {

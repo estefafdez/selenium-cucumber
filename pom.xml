@@ -189,7 +189,7 @@
 			<properties>
 				<!-- Optional URL to server. Default value is http://localhost:9000 -->
 				<sonar.host.url>
-					http://pwd10_0_4_3-9000.host2.labs.play-with-docker.com
+					http://pwd10_0_37_3-9000.host3.labs.play-with-docker.com
 				</sonar.host.url>
 			</properties>
 		</profile>

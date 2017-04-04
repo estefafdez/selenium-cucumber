@@ -1,4 +1,4 @@
-package com.test.step_defintions;
+package com.test.step.defintions;
 
 import java.net.MalformedURLException;
 
@@ -8,7 +8,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 
-import com.selenium.configure_environment.CreateDriver;
+import com.selenium.configure.environment.CreateDriver;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;

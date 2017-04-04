@@ -1,4 +1,4 @@
-package com.selenium.configure_environment;
+package com.selenium.configure.environment;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,19 +16,22 @@ import org.openqa.selenium.WebDriver;
  *
  */
 public class CreateDriver {
-    private static String browser, os;
+    private static String browser;
+    private static String os;
     private static String logLevel;
     private static String properties = "test.properties";
     private static Properties prop = new Properties();
     private static InputStream in = WebDriverFactory.class.getResourceAsStream("/test.properties");    
-    private static WebDriver driver; 
+  
     /******** Log Attribute ********/
     private static Logger log = Logger.getLogger(CreateDriver.class);
 
     /**
      * Get the Browser from the POM
      */
-     public static WebDriver initConfig(){
+     public static WebDriver initConfig(){    	 
+    	WebDriver driver; 
+    	
         try {
         	log.info("***********************************************************************************************************");
         	log.info("[ POM Configuration ] - Read the basic properties configuration from: " + properties);
@@ -47,7 +50,7 @@ public class CreateDriver {
         log.info("***********************************************************************************************************");
         
         /****** Load the driver *******/
-        driver = WebDriverFactory.CreateNewWebDriver(browser, os);
+        driver = WebDriverFactory.createNewWebDriver(browser, os);
        
         
         /******** Clean Cookies, maxinize and declare Timeout on the Driver *******/

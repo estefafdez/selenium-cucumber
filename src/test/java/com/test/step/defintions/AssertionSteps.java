@@ -1,4 +1,4 @@
-package com.test.step_defintions;
+package com.test.step.defintions;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
@@ -14,7 +14,6 @@ import cucumber.api.java.en.Then;
  */
 public class AssertionSteps {
 	WebDriver driver;
-	//WebDriverWait w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
 	public static final int EXPLICIT_TIMEOUT = 15; 
 	
 	/******** Log Attribute ********/
