@@ -1,4 +1,4 @@
-package configureEnvironment;
+package com.selenium.configure_environment;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -138,14 +138,6 @@ public class HandlerRepo {
         }
     }
     
-    /**
-     * Unzip 2
-     */
-//    Unzip unzipper = new Unzip();
-//    unzipper.setSrc(theZIPFile);
-//    unzipper.setDest(theTargetFolder);
-//    unzipper.execute();
-
     /**
      *Delete zip
      * 

@@ -1,4 +1,4 @@
-package configureEnvironment;
+package com.selenium.configure_environment;
 
 import java.io.IOException;
 import java.io.InputStream;

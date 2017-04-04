@@ -1,4 +1,4 @@
-package stepDefintions;
+package com.test.step_defintions;
 
 import java.io.IOException;
 

@@ -3,7 +3,7 @@
     	<modelVersion>4.0.0</modelVersion>
 		<groupId>SeleniumCucumberJava</groupId>
 	    <artifactId>com.selenium.cucumber</artifactId>
-	    <version>1.0.2</version>
+	    <version>1.0.5</version>
 		<developers>
 			<developer>
 				<name>estefafdez</name>
@@ -37,7 +37,7 @@
 		<!-- This Parameters select where run the test [Remote ,Firefox ,Chrome ,Internet Explorer] -->
 		<browser>Firefox</browser>
 		<!-- Test Operative system [linux, mac, windows]-->
-		<os>mac</os>
+		<os>windows</os>
 		<!-- Log Mode section -->
 		<!-- Parameter for logger level use in this order to include the right information [ALL > DEBUG > INFO > WARN > ERROR > FATAL > OFF]-->
 		<log.level>INFO</log.level>
@@ -189,7 +189,7 @@
 			<properties>
 				<!-- Optional URL to server. Default value is http://localhost:9000 -->
 				<sonar.host.url>
-					http://localhost:9000/about
+					http://pwd10_0_4_3-9000.host2.labs.play-with-docker.com
 				</sonar.host.url>
 			</properties>
 		</profile>

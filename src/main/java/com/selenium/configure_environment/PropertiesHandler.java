@@ -1,4 +1,4 @@
-package configureEnvironment;
+package com.selenium.configure_environment;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,9 +6,6 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
-import stepDefintions.Hooks;
 
 
 /**
@@ -17,7 +14,6 @@ import stepDefintions.Hooks;
  *
  */
 public class PropertiesHandler {
-	static WebDriver driver;
     private static String properties = "selector.properties";
     private static Properties selectorProp = new Properties();
     private static InputStream in = WebDriverFactory.class.getResourceAsStream("/selectors/selector.properties");    
@@ -26,10 +22,10 @@ public class PropertiesHandler {
     /******** Log Attribute ********/
     private static Logger log = Logger.getLogger(PropertiesHandler.class);
     
-    public PropertiesHandler(){
-		 driver= Hooks.driver;
-	}
-
+    private PropertiesHandler(){
+    	
+    }
+    
     /**
      * Get the selector of a properties file with its key.
      */
@@ -53,32 +49,31 @@ public class PropertiesHandler {
       */
      public static By getCompleteElement(String type, String key) {
          By result;
-         int cases = 8;
-         String selector = PropertiesHandler.getSelectorFromProperties(key);
+         String selector = getSelectorFromProperties(key);
          
-         switch (cases) {
-             case 1: type = "className";
+         switch (type) {
+             case "className":
                  result = By.className(selector);
                  break;
-             case 2: type = "cssSelector";
+             case "cssSelector":
                  result = By.cssSelector(selector);
                  break;
-             case 3: type = "id";
+             case "id":
                  result = By.id(selector);
                  break;
-             case 4: type = "linkText";
+             case "linkText":
                  result = By.linkText(selector);
                  break;
-             case 5: type = "name";
+             case "name":
                  result = By.name(selector);
                  break;
-             case 6: type = "partialLinkText";
+             case "partialLinkText":
                  result = By.partialLinkText(selector);
                  break;
-             case 7: type = "tagName";
+             case "tagName":
                  result = By.tagName(selector);
                  break;
-             case 8: type = "xpath";
+             case "xpath":
                  result = By.xpath(selector);
                  break;
              default:

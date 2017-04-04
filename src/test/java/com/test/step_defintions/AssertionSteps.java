@@ -1,4 +1,4 @@
-package stepDefintions;
+package com.test.step_defintions;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;

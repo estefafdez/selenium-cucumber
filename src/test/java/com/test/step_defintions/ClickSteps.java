@@ -1,11 +1,12 @@
-package stepDefintions;
+package com.test.step_defintions;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import configureEnvironment.PropertiesHandler;
+import com.selenium.configure_environment.PropertiesHandler;
+
 import cucumber.api.java.en.Then;
 
 /**

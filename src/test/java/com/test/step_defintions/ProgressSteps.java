@@ -1,6 +1,7 @@
-package stepDefintions;
+package com.test.step_defintions;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import cucumber.api.java.en.Then;
 
@@ -10,7 +11,7 @@ import cucumber.api.java.en.Then;
  * @author estefafdez
  */
 public class ProgressSteps {
-	WebDriver driver;
+	static WebDriver driver;
 	
 	public ProgressSteps(){
 		 driver= Hooks.driver;
@@ -19,11 +20,7 @@ public class ProgressSteps {
 	// wait for specific period of time
 	@Then("^I wait for (\\d+) seconds$")
 	public static void wait(int seconds) {
-		try {
-			Thread.sleep(seconds);
-		} catch (InterruptedException ex) {
-			Thread.currentThread().interrupt();
-		}
+		new WebDriverWait(driver, seconds);
 	}
 
 	

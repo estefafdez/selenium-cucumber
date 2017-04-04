@@ -1,4 +1,4 @@
-package configureEnvironment;
+package com.selenium.configure_environment;
 
 import java.io.IOException;
 
@@ -18,15 +18,15 @@ public class Main {
         // http://selenium-release.storage.googleapis.com           --> IE
         // https://github.com/mozilla/geckodriver/releases          --> FireFox
         
-        String URL_REPO = "http://selenium-release.storage.googleapis.com";
-        String VERSION_DRIVER = "/3.3/";
-        String NAME_DRIVER = "IEDriverServer_x64_3.3.0.zip";
-        String RESOURCE_PATH = "src\\main\\resources\\";
+        String repoURL = "http://selenium-release.storage.googleapis.com";
+        String driverVersion = "/3.3/";
+        String driverName = "IEDriverServer_x64_3.3.0.zip";
+        String resourcePath = "src\\main\\resources\\";
 
         try {
-            HandlerRepo.downloadFile(URL_REPO + VERSION_DRIVER + NAME_DRIVER, RESOURCE_PATH);
-            HandlerRepo.unZipIt(RESOURCE_PATH + NAME_DRIVER, RESOURCE_PATH);
-            HandlerRepo.deleteZip(RESOURCE_PATH + NAME_DRIVER);
+            HandlerRepo.downloadFile(repoURL + driverVersion + driverName, resourcePath);
+            HandlerRepo.unZipIt(resourcePath + driverName, resourcePath);
+            HandlerRepo.deleteZip(resourcePath + driverName);
         } catch (IOException e) {
         	log.error("manageDriver Error", e);
         }
