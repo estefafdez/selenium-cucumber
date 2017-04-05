@@ -5,19 +5,19 @@ Selenium Webdriver 3.0.1 integration with Cucumber.
 <img src="http://www.testingexcellence.com/wp-content/uploads/2016/01/selenium-and-cucumber.png" />
 _______________________________________
 
-## 1. Download the project
+## 1. Download the project.
 
-In order to start using the project you need to create your own Fork on github and then clone the project:
+In order to start using the project you need to create your own Fork on Github and then clone the project:
 
 ```bash
 git clone https://github.com/XXXX/selenium-cucumber
 ```
 
-## 2. Choose your OS, Browser  and Log Level on the POM
+## 2. Choose your OS, Browser and Log Level on the POM.
 
 On the pom.xml file you can choose between:
-- Several OS: Windows, Mac, Linux 
-- Several Browsers: Chrome, Firefox, IE to run your test. 
+- Several OS: Windows, Mac, Linux.
+- Several Browsers: Chrome, Firefox, IE.
 - Several log level configuration:  All, Debug, Info, Warn, Error, Fatal, Off.
 
 You just need to change the following lines:
@@ -28,18 +28,19 @@ You just need to change the following lines:
 [Remote ,Firefox ,Chrome ,Internet Explorer] -->
 <browser>YOUR_BROWSER</browser>
 
-<!-- Test Operative system [linux, mac, windows]-->
+<!-- Test Operative System [linux, mac, windows]-->
 <os>YOUR_OS</os>
 
-<!-- Log Mode section -->
+<!-- Log Mode Section -->
 <!-- Parameter for logger level use in this order to include the right information 
 [ALL > DEBUG > INFO > WARN > ERROR > FATAL > OFF]-->
 <log.level>YOUR_LOG_MODE</log.level>
 ```
+
 ## 3. Step Definition By Action. 
 
 On this project you can find the following set of predefined steps ordered by action already done for you. 
-The actions already done are:
+The types of actions are:
 
 - Navigation Steps
 - Assertion Steps
@@ -64,16 +65,42 @@ You can install in two minutes using the SonarQube tutorial available here:
 https://docs.sonarqube.org/display/SONAR/Get+Started+in+Two+Minutes
 ```
 
-Once the SonarQube platform has been installed, you're ready to install an analyze your project. First,  run your local server:
+Once the SonarQube platform has been installed, you're ready to install and analyse your project. First, run your local server:
 
 ```bash
 http://localhost:9000/about
 ```
 
-And  then, run the project in order to check the code quality:
+And then, run the project in order to check the code quality:
 
 ```bash
 mvn clean verify sonar:sonar
 ```
- 
- 
+
+## 5. Run SonarQube on a Docker easily.
+
+<img src="http://thanhtham.com/uploads/docker.png" />
+
+In case you don't want to install SonarQube on your local machine, you can run sonar remotely using <b>Docker</b>. 
+
+You have two choices to create your own Docker:
+
+1) Create a new instance on: http://labs.play-with-docker.com/. 
+It's free, easy to use and you don't need to install anything on your computer. 
+
+2) Download Docker from its official Website: https://www.docker.com/
+Download, install Docker and run everything you need. 
+
+Once you have Docker, you need to run the followings lines:
+
+```bash
+docker pull sonarqube
+docker run -d --name sonarqube -p 9000:9000 sonarqube
+```
+
+And then, you are ready to run SonarQube:
+
+```bash
+mvn clean install sonar:sonar
+```
+
