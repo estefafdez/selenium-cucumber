@@ -1,5 +1,6 @@
 package com.test.step.defintions;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import cucumber.api.java.en.Then;
@@ -11,7 +12,9 @@ import cucumber.api.java.en.Then;
  */
 public class ConfigurationSteps {
 	WebDriver driver;
-	
+	/******** Log Attribute ********/
+    private static Logger log = Logger.getLogger(ConfigurationSteps.class);
+    
 	public ConfigurationSteps(){
 		 driver= Hooks.driver;
 	}
@@ -23,6 +26,14 @@ public class ConfigurationSteps {
   	{
 
   	}
+  	
+  	/** Close the driver instance */
+	@Then("^I close browser$")
+	public void close()
+	{
+		log.info("Closing browsers");
+		driver.close();
+	}
 	
 
 }

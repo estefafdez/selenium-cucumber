@@ -2,8 +2,10 @@ package com.test.step.defintions;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -77,121 +79,145 @@ public class AssertionSteps {
 		  			 
 	/** Check if an element (should/should not) be (enabled/disabled) */
 	@Then("^element having (.+) \"([^\"]*)\" should\\s*((?:not)?)\\s+be (enabled|disabled)$")
-	public void checkElementEnable(String type, By selector,String present,String state) throws Exception
+	public void checkElementEnable(String type, String key,String present,String state) throws Exception
 	{
-		//TODO: Refactor with key
-		boolean enable = driver.findElement(selector).isEnabled();
+		By element = PropertiesHandler.getCompleteElement(type, key);
+		boolean enable = driver.findElement(element).isEnabled();
 		
 		if(present.equals("should")){			
-			log.debug("The element" + selector +" should be present");
+			log.debug("The element" + element +" should be present");
 			if(state.equals("enabled")){
-				Assert.assertTrue("The element by " + selector + "is disabled", enable);
+				Assert.assertTrue("The element by " + element + "is disabled", enable);
 			}
 			else if(state.equals("disabled")){
-				Assert.assertFalse("The element by " + selector + "is enabled", enable);
+				Assert.assertFalse("The element by " + element + "is enabled", enable);
 			}
 		}
 		else if(present.equals("should not")){
-			log.debug("The element" + selector +" should not be present");
+			log.debug("The element" + element +" should not be present");
 			if(state.equals("enabled")){
-				Assert.assertTrue("The element by " + selector + "is disabled", enable);
+				Assert.assertTrue("The element by " + element + "is disabled", enable);
 			}
 			else if(state.equals("disabled")){
-				Assert.assertFalse("The element by " + selector + "is enabled", enable);
+				Assert.assertFalse("The element by " + element + "is enabled", enable);
 			}
 		}
 	}
 		
 	/** Check if an element (should/should not) be present */
 	@Then("^element having (.+) \"(.*?)\" should\\s*((?:not)?)\\s+be present$") 
-	public void checkElementPresent(String type,By selector,String present) throws Exception
+	public void checkElementPresent(String type,String key,String present) throws Exception
 	{
-		//TODO: Refactor with key
-		boolean isPresent = driver.findElements(selector).isEmpty();
+		By element = PropertiesHandler.getCompleteElement(type, key);
+		boolean isPresent = driver.findElements(element).isEmpty();
 		
 		if(present.equals("should")){
-			log.debug("The element: " + selector +" should be present");
-			Assert.assertTrue("The element by " + selector + "is not present", isPresent);
+			log.debug("The element: " + element +" should be present");
+			Assert.assertTrue("The element by " + element + "is not present", isPresent);
 		}
 		else if(present.equals("should not")){
-			log.debug("The element: " + selector +" should not be present");
-			Assert.assertFalse("The element by " + selector + "is present", isPresent);		
+			log.debug("The element: " + element +" should not be present");
+			Assert.assertFalse("The element by " + element + "is present", isPresent);		
 		}
 	}
 	
 	/** Check if an element should be (checked/unchecked) */
 	@Then("^checkbox having (.+) \"(.*?)\" should be (checked|unchecked)$")
-	public void checkCheckboxChecked(String type, By selector,String state) throws Exception
+	public void checkCheckboxChecked(String type, String key,String state) throws Exception
 	{
-		//TODO: Refactor with key
-		boolean selected = driver.findElement(selector).isSelected();
+		By element = PropertiesHandler.getCompleteElement(type, key);
+		boolean selected = driver.findElement(element).isSelected();
 		
 		if(state.equals("checked")){
-			log.debug("The element: " + selector +" should be checked");
-			Assert.assertTrue("The element by " + selector + "is not checked", selected);
+			log.debug("The element: " + element +" should be checked");
+			Assert.assertTrue("The element by " + element + "is not checked", selected);
 		}
 		else if(state.equals("unchecked")){
-			log.debug("The element: " + selector +" should be unchecked");
-			Assert.assertFalse("The element by " + selector + "is checked", selected);		
+			log.debug("The element: " + element +" should be unchecked");
+			Assert.assertFalse("The element by " + element + "is checked", selected);		
 		}
 	}
 		  
 	/** Check if an element should be (selected/unselected) */
 	@Then("^radio button having (.+) \"(.*?)\" should be (selected|unselected)$") 
-	public void checkRadioButtonSelected(String type,By selector,String state) throws Exception
+	public void checkRadioButtonSelected(String type,String key,String state) throws Exception
 	{
-		//TODO: Refactor with key
-		boolean selected = driver.findElement(selector).isSelected();
+		By element = PropertiesHandler.getCompleteElement(type, key);
+		boolean selected = driver.findElement(element).isSelected();
 		
 		if(state.equals("selected")){
-			log.debug("The element: " + selector +" should be selected");
-			Assert.assertTrue("The element by " + selector + "is not selected", selected);
+			log.debug("The element: " + element +" should be selected");
+			Assert.assertTrue("The element by " + element + "is not selected", selected);
 		}
 		else if(state.equals("unselected")){
-			log.debug("The element: " + selector +" should be unselected");
-			Assert.assertFalse("The element by " + selector + "is selected", selected);		
+			log.debug("The element: " + element +" should be unselected");
+			Assert.assertFalse("The element by " + element + "is selected", selected);		
 		}
 	}
-		 
-	//steps to assert option by text from radio button group selected/unselected
-	@Then("^option \"(.*?)\" by (.+) from radio button group having (.+) \"(.*?)\" should be (selected|unselected)$")
-	public void checkOptionFromRadioButtonSelected(String option,String attrb,String type,String selector,String state) throws Exception
-	{
 
-	}
-		
-	//steps to check link presence
+	/** Check if an link with certain text (should/should not) be present*/
 	@Then("^link having text \"(.*?)\" should\\s*((?:not)?)\\s+be present$") 
-	public void checkElementPresent(String selector,String present) 
+	public void checkElementPresent(String text, String present) 
 	{
-	
+		WebElement element = driver.findElement(By.linkText(text));
+		boolean isPresent = w.until(ExpectedConditions.textToBePresentInElement(element,  text));
+		
+		if(present.equals("should")){
+			log.debug("The element: " + element +" should be present");
+			Assert.assertTrue("The element by " + element + "is not present", isPresent);
+		}
+		else if(present.equals("should not")){
+			log.debug("The element: " + element +" should not be present");
+			Assert.assertFalse("The element by " + element + "is present", isPresent);		
+		}
 	}
 		  
-	//steps to check partial link presence
+	/** Check if an partial link with certain text (should/should not) be present*/
 	@Then("^link having partial text \"(.*?)\" should\\s*((?:not)?)\\s+be present$") 
-	public void checkPartialElementPresent(String selector,String present) 
+	public void checkPartialElementPresent(String text,String present) 
 	{
+		WebElement element = driver.findElement(By.partialLinkText(text));
+		boolean isPresent = w.until(ExpectedConditions.textToBePresentInElement(element,  text));
+		
+		if(present.equals("should")){
+			log.debug("The element: " + element +" should be present");
+			Assert.assertTrue("The element by " + element + "is not present", isPresent);
+		}
+		else if(present.equals("should not")){
+			log.debug("The element: " + element +" should not be present");
+			Assert.assertFalse("The element by " + element + "is present", isPresent);		
+		}
 	}
 		
-	//step to assert javascript pop-up alert text
+	/** Check if a text is displayed on a javascript pop-up alert*/
 	@Then("^I should see alert text as \"(.*?)\"$") 
 	public void checkJavascriptAlertText(String actualValue) 
 	{
+		Alert alert = driver.switchTo().alert();
+		String alertText = alert.getText();		
+		Assert.assertTrue("The JavaScript pop-up alert does not contains the text", alertText.equals(actualValue));		
 	}
 		
-	// step to select dropdown list
-	@Then("^option \"(.*?)\" by (.+) from dropdown having (.+) \"(.*?)\" should be (selected|unselected)$")
-	public void checkDropdownOptionSelected(String option,String by,String type,String selector,String state) throws Exception
+	/** Check if an option with a certain value is (selected/unselected) on a drop-down*/
+	@Then("^option with value \"(.*?)\" from dropdown having (.+) \"(.*?)\" should be (selected|unselected)$")
+	public void checkDropdownOptionSelected(String value,String type,String type2,String key,String select) throws Exception
 	{
-	
-	}
-
-	//Step to close the browser
-	@Then("^I close browser$")
-	public void close()
-	{
-		driver.close();
-	}
-	
-
+		By optionToSelect = PropertiesHandler.getCompleteElement(type,value);
+		By dropdown = PropertiesHandler.getCompleteElement(type2,key);
+		driver.findElement(dropdown).click();		
+		WebElement selectElement = driver.findElement(optionToSelect);
+		
+		if(select.equals("selected")){
+			log.debug("The option: " + optionToSelect +" is selected");			
+			selectElement.click();
+			Assert.assertTrue("The element" + optionToSelect + "is not selected", selectElement.isSelected());
+		}
+		else if(select.equals("unselected")){
+			log.debug("The option: " + optionToSelect +" is unselected");			
+			if(selectElement.isSelected()){
+				selectElement.click();
+			}			
+			Assert.assertTrue("The element" + optionToSelect + "is selected", selectElement.isSelected());
+		}	
+	}	
 }
