@@ -19,13 +19,6 @@ public class ConfigurationSteps {
 		 driver= Hooks.driver;
 	}
 
-	
-  	// step to print configuration
-  	@Then("^I print configuration$") 
-  	public void printConfiguration()
-  	{
-
-  	}
   	
   	/** Close the driver instance */
 	@Then("^I close browser$")

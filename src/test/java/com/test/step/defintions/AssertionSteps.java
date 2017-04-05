@@ -21,7 +21,6 @@ import cucumber.api.java.en.Then;
 public class AssertionSteps {
 	WebDriver driver;
 	public static final int EXPLICIT_TIMEOUT = 15; 
-	WebDriverWait w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
 	
 	/******** Log Attribute ********/
     private static Logger log = Logger.getLogger(AssertionSteps.class);
@@ -36,11 +35,11 @@ public class AssertionSteps {
 	{
 		String pageTitle = driver.getTitle();
 		if(present.equals("see")){
-			log.debug("The title should be present");
+			log.info("The title should be present");
 			Assert.assertTrue("The title is not present", pageTitle.equals(title));			
 		}
 		else if(present.equals("not see")){
-			log.debug("The title should not be present");
+			log.info("The title should not be present");
 			Assert.assertFalse("The title is present", pageTitle.equals(title));		
 		}
 	}
@@ -51,11 +50,11 @@ public class AssertionSteps {
 	{
 		String pageTitle = driver.getTitle();
 		if(present.equals("see")){
-			log.debug("The partial text on the title should be present");
+			log.info("The partial text on the title should be present");
 			Assert.assertTrue("The partial title is not present", pageTitle.contains(partialTextTitle));			
 		}
 		else if(present.equals("not see")){
-			log.debug("The partial text on the title should not be present");
+			log.info("The partial text on the title should not be present");
 			Assert.assertFalse("The partial title is present", pageTitle.contains(partialTextTitle));		
 		}
 	}
@@ -65,14 +64,15 @@ public class AssertionSteps {
 	public void checkElementText(String type, String key,String present,String text) throws Exception 
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
+		WebDriverWait w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
 		boolean textElement = w.until(ExpectedConditions.textToBePresentInElementLocated(element,  text));
 		
 		if(present.equals("should")){			
-			log.debug("The element: "+ element +"with the text" + text +" should be present");
+			log.info("The element: "+ element +"with the text" + text +" should be present");
 			Assert.assertTrue("The element by " + element + "with the text " + text + "is not present", textElement);
 		}
 		else if(present.equals("should not")){
-			log.debug("The element: "+ element +"with the text" + text +" should not be present");
+			log.info("The element: "+ element +"with the text" + text +" should not be present");
 			Assert.assertFalse("The element by " + element + "with the text " + text + "is present", textElement);
 		}
 	}	
@@ -85,7 +85,7 @@ public class AssertionSteps {
 		boolean enable = driver.findElement(element).isEnabled();
 		
 		if(present.equals("should")){			
-			log.debug("The element" + element +" should be present");
+			log.info("The element" + element +" should be present");
 			if(state.equals("enabled")){
 				Assert.assertTrue("The element by " + element + "is disabled", enable);
 			}
@@ -94,7 +94,7 @@ public class AssertionSteps {
 			}
 		}
 		else if(present.equals("should not")){
-			log.debug("The element" + element +" should not be present");
+			log.info("The element" + element +" should not be present");
 			if(state.equals("enabled")){
 				Assert.assertTrue("The element by " + element + "is disabled", enable);
 			}
@@ -112,11 +112,11 @@ public class AssertionSteps {
 		boolean isPresent = driver.findElements(element).isEmpty();
 		
 		if(present.equals("should")){
-			log.debug("The element: " + element +" should be present");
+			log.info("The element: " + element +" should be present");
 			Assert.assertTrue("The element by " + element + "is not present", isPresent);
 		}
 		else if(present.equals("should not")){
-			log.debug("The element: " + element +" should not be present");
+			log.info("The element: " + element +" should not be present");
 			Assert.assertFalse("The element by " + element + "is present", isPresent);		
 		}
 	}
@@ -129,11 +129,11 @@ public class AssertionSteps {
 		boolean selected = driver.findElement(element).isSelected();
 		
 		if(state.equals("checked")){
-			log.debug("The element: " + element +" should be checked");
+			log.info("The element: " + element +" should be checked");
 			Assert.assertTrue("The element by " + element + "is not checked", selected);
 		}
 		else if(state.equals("unchecked")){
-			log.debug("The element: " + element +" should be unchecked");
+			log.info("The element: " + element +" should be unchecked");
 			Assert.assertFalse("The element by " + element + "is checked", selected);		
 		}
 	}
@@ -146,11 +146,11 @@ public class AssertionSteps {
 		boolean selected = driver.findElement(element).isSelected();
 		
 		if(state.equals("selected")){
-			log.debug("The element: " + element +" should be selected");
+			log.info("The element: " + element +" should be selected");
 			Assert.assertTrue("The element by " + element + "is not selected", selected);
 		}
 		else if(state.equals("unselected")){
-			log.debug("The element: " + element +" should be unselected");
+			log.info("The element: " + element +" should be unselected");
 			Assert.assertFalse("The element by " + element + "is selected", selected);		
 		}
 	}
@@ -160,14 +160,15 @@ public class AssertionSteps {
 	public void checkElementPresent(String text, String present) 
 	{
 		WebElement element = driver.findElement(By.linkText(text));
+		WebDriverWait w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
 		boolean isPresent = w.until(ExpectedConditions.textToBePresentInElement(element,  text));
 		
 		if(present.equals("should")){
-			log.debug("The element: " + element +" should be present");
+			log.info("The element: " + element +" should be present");
 			Assert.assertTrue("The element by " + element + "is not present", isPresent);
 		}
 		else if(present.equals("should not")){
-			log.debug("The element: " + element +" should not be present");
+			log.info("The element: " + element +" should not be present");
 			Assert.assertFalse("The element by " + element + "is present", isPresent);		
 		}
 	}
@@ -177,19 +178,20 @@ public class AssertionSteps {
 	public void checkPartialElementPresent(String text,String present) 
 	{
 		WebElement element = driver.findElement(By.partialLinkText(text));
+		WebDriverWait w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
 		boolean isPresent = w.until(ExpectedConditions.textToBePresentInElement(element,  text));
 		
 		if(present.equals("should")){
-			log.debug("The element: " + element +" should be present");
+			log.info("The element: " + element +" should be present");
 			Assert.assertTrue("The element by " + element + "is not present", isPresent);
 		}
 		else if(present.equals("should not")){
-			log.debug("The element: " + element +" should not be present");
+			log.info("The element: " + element +" should not be present");
 			Assert.assertFalse("The element by " + element + "is present", isPresent);		
 		}
 	}
 		
-	/** Check if a text is displayed on a javascript pop-up alert*/
+	/** Check if a text is displayed on a JavaScript pop-up alert*/
 	@Then("^I should see alert text as \"(.*?)\"$") 
 	public void checkJavascriptAlertText(String actualValue) 
 	{
@@ -208,12 +210,12 @@ public class AssertionSteps {
 		WebElement selectElement = driver.findElement(optionToSelect);
 		
 		if(select.equals("selected")){
-			log.debug("The option: " + optionToSelect +" is selected");			
+			log.info("The option: " + optionToSelect +" is selected");			
 			selectElement.click();
 			Assert.assertTrue("The element" + optionToSelect + "is not selected", selectElement.isSelected());
 		}
 		else if(select.equals("unselected")){
-			log.debug("The option: " + optionToSelect +" is unselected");			
+			log.info("The option: " + optionToSelect +" is unselected");			
 			if(selectElement.isSelected()){
 				selectElement.click();
 			}			

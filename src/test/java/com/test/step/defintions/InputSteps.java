@@ -1,6 +1,12 @@
 package com.test.step.defintions;
 
+import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import com.selenium.configure.environment.PropertiesHandler;
 
 import cucumber.api.java.en.Then;
 
@@ -12,77 +18,110 @@ import cucumber.api.java.en.Then;
 public class InputSteps {
 	WebDriver driver;
 	
+	/******** Log Attribute ********/
+    private static Logger log = Logger.getLogger(InputSteps.class);
+	
 	public InputSteps(){
 		 driver= Hooks.driver;
 	}
 
-	
-	// enter text into input field steps
+	/** Enter a text into an input field element. */
 	@Then("^I enter \"([^\"]*)\" into input field having (.+) \"([^\"]*)\"$")
-	public void enterText(String text, String type,String accessName) throws Exception
+	public void inputText(String text, String type,String key) throws Exception
 	{
-	
+		By element = PropertiesHandler.getCompleteElement(type, key);
+		WebElement input= driver.findElement(element);
+		input.click();
+		input.clear();
+		log.info("Sending text: "+text+"into element"+element);
+		input.sendKeys(text);
 	}
 
-	// clear input field steps
+	/** Clear input field element. */
 	@Then("^I clear input field having (.+) \"([^\"]*)\"$") 
-	public void clearText(String type, String accessName) throws Exception
+	public void clearText(String type, String key) throws Exception
 	{
+		By element = PropertiesHandler.getCompleteElement(type, key);
+		WebElement input= driver.findElement(element);
+		input.click();
+		input.clear();
+		log.info("Element: "+element + "clear");
 	
 	}
 
-	// select option by text/value from dropdown
+	/** Select an option by text/value from a drop-down */
 	@Then("^I select \"(.*?)\" option by (.+) from dropdown having (.+) \"(.*?)\"$")
-	public void selectOptionDropdown(String option,String optionBy,String type,String accessName) throws Exception
+	public void selectOptionDropdown(String option,String optionBy,String type,String key) throws Exception
 	{
-	
-	}
-	
-	// select option by index from dropdown
-	@Then("^I select (\\d+) option by index from dropdown having (.+) \"(.*?)\"$")
-	public void selectOptionDropdownByIndex(String option, String type, String accessName) throws Exception
-	{
-	
-	}
+		By dropdown = PropertiesHandler.getCompleteElement(type, key);		
+		Select opt = new Select(driver.findElement(dropdown));
 		
-	// select option by text/value from multiselect
-	@Then("^I select \"(.*?)\" option by (.+) from multiselect dropdown having (.+) \"(.*?)\"$")
-	public void selectOptionMultiDropdown(String option,String optionBy, String type,String accessName) throws Exception
-	{
+		if(optionBy.equals("text")){
+			log.info("Select option: " + option + "by text");		
+			opt.selectByVisibleText(option);				
+		}
+		else if(optionBy.equals("value")){
+			log.info("Select option: " + option + "by value");			
+			opt.selectByValue(option);				
+			
+		}					
 	}
 	
-	// select option by index from multiselect
-	@Then("^I select (\\d+) option by index from multiselect dropdown having (.+) \"(.*?)\"$")
-	public void selectOptionMultiDropdownByIndex(String option, String type, String accessName) throws Exception
+	/** Select an option by index from a drop-down */
+	@Then("^I select option (\\d+) by index from dropdown having (.+) \"(.*?)\"$")
+	public void selectOptionDropdownByIndex(int option, String type, String key) throws Exception
 	{
-		
+		By dropdown = PropertiesHandler.getCompleteElement(type, key);		
+		Select opt = new Select(driver.findElement(dropdown));
+		log.info("Select option: " + option + "by text");		
+		opt.selectByIndex(option);				
 	}
 	
-	// deselect option by text/value from multiselect
-	@Then("^I deselect \"(.*?)\" option by (.+) from multiselect dropdown having (.+) \"(.*?)\"$")
-	public void unselectOptionMultiDropdown(String option,String optionBy, String type,String accessName) throws Exception
+	/** Clear all options selected from a drop-down */
+	@Then("^I clear all options selected from dropdown having (.+) \"(.*?)\"$")
+	public void deselectAllOptionDropdown(String type, String key) throws Exception
 	{
-	
-	}
-		
-	// deselect option by index from multiselect
-	@Then("^I deselect (\\d+) option by index from multiselect dropdown having (.+) \"(.*?)\"$")
-	public void unselectOptionMultiDropdownByIndex(String option, String type, String accessName) throws Exception
-	{
-	
+		By dropdown = PropertiesHandler.getCompleteElement(type, key);		
+		Select opt = new Select(driver.findElement(dropdown));
+		log.info("Clear all options selected from drop-down");		
+		opt.deselectAll();			
 	}
 
-	// step to unselect option from mutliselect dropdown list
-	@Then("^I deselect all options from multiselect dropdown having (.+) \"(.*?)\"$")
-	public void unselectAllOptionsFromMultiDropdown(String type, String accessName) throws Exception
+	
+	/** Unselect an option by text/value from a drop-down */
+	@Then("^I unselect \"(.*?)\" option by (.+) from dropdown having (.+) \"(.*?)\"$")
+	public void unselectOptionMultiDropdown(String option,String optionBy, String type,String key) throws Exception
 	{
-
+		By dropdown = PropertiesHandler.getCompleteElement(type, key);		
+		Select opt = new Select(driver.findElement(dropdown));
+		
+		if(optionBy.equals("text")){
+			log.info("Unselect option: " + option + "by text");		
+			opt.deselectByVisibleText(option);				
+		}
+		else if(optionBy.equals("value")){
+			log.info("Unselect option: " + option + "by value");			
+			opt.deselectByValue(option);				
+		}		
+	}
+		
+	/** Unselect an option by index from a drop-down */
+	@Then("^I unselect (\\d+) option by index from dropdown having (.+) \"(.*?)\"$")
+	public void unselectOptionMultiDropdownByIndex(int option, String type, String key) throws Exception
+	{
+		By dropdown = PropertiesHandler.getCompleteElement(type, key);		
+		Select opt = new Select(driver.findElement(dropdown));
+		log.info("Select option: " + option + "by text");		
+		opt.selectByIndex(option);	
 	}
 
 	//check checkbox steps
 	@Then("^I check the checkbox having (.+) \"(.*?)\"$") 
-	public void checkCheckbox(String type, String accessName) throws Exception
+	public void checkCheckbox(String type, String key) throws Exception
 	{
+		By element = PropertiesHandler.getCompleteElement(type, key);	
+		boolean isChecked = driver.findElement(element).isSelected();
+		//TODO:
 
 	}
 

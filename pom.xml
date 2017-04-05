@@ -3,7 +3,7 @@
     	<modelVersion>4.0.0</modelVersion>
 		<groupId>SeleniumCucumberJava</groupId>
 	    <artifactId>com.selenium.cucumber</artifactId>
-	    <version>1.0.5</version>
+	    <version>1.0.6</version>
 		<developers>
 			<developer>
 				<name>estefafdez</name>
