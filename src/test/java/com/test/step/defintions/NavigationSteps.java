@@ -16,47 +16,66 @@ public class NavigationSteps {
 		 driver= Hooks.driver;
 	}
 
-	//Step to navigate to specified URL
+	/** Navigate to a specified URL */
 	@Then("^I navigate to \"([^\"]*)\"$")
 	public void navigateTo(String url)
 	{
 	    driver.navigate().to(url);
 	}
-	
-	//Step to navigate forward
+
+	/** Navigate forward */
 	@Then("^I navigate forward")
 	public void navigateForward()
 	{
 	    driver.navigate().forward();
 	}
 		
-	//Step to navigate backward
+	/** Navigate backward */
 	@Then("^I navigate back")
 	public void navigateBack()
 	{
 	    driver.navigate().back();
 	}
 	
-	// steps to refresh page
+	/** Refresh current page */
 	@Then("^I refresh page$")
 	public void refreshPage()
 	{
 	    driver.navigate().refresh();
 	}
 	
-	// Switch between windows
-	
-	//Switch to new window
+	/** Switch to a new windows */
 	@Then("^I switch to new window$")
 	public void switchNewWindow()
 	{
-		
+		for(String winHandle : driver.getWindowHandles()){
+		    driver.switchTo().window(winHandle);
+		}
 	}
 		 
-	//Switch to old window
+	/** Switch to the previous windows */
 	@Then("^I switch to previous window$")
 	public void switchPreviousWindows()
 	{
+		// Store the current window handle
+		String winHandleBefore = driver.getWindowHandle();
+
+		// Perform the click operation that opens new window
+
+		// Switch to new window opened
+		for(String winHandle : driver.getWindowHandles()){
+		    driver.switchTo().window(winHandle);
+		}
+
+		// Perform the actions on new window
+
+		// Close the new window, if that window no more required
+		driver.close();
+
+		// Switch back to original browser (first window)
+		driver.switchTo().window(winHandleBefore);
+
+		// Continue with original browser (first window)
 		
 	}
 		
