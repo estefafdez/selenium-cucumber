@@ -115,40 +115,40 @@ public class InputSteps {
 		opt.selectByIndex(option);	
 	}
 
-	//check checkbox steps
+	/** Check an option from a checkbox */
 	@Then("^I check the checkbox having (.+) \"(.*?)\"$") 
 	public void checkCheckbox(String type, String key) throws Exception
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);	
 		boolean isChecked = driver.findElement(element).isSelected();
-		//TODO:
-
+		if(!isChecked){
+			log.info("Clicking on the checkbox to select:" +element);
+			driver.findElement(element).click();
+		}
 	}
 
-	//uncheck checkbox steps
+	/** Uncheck an option from a checkbox */
 	@Then("^I uncheck the checkbox having (.+) \"(.*?)\"$")
-	public void uncheckCheckbox(String type,String accessName) throws Exception
+	public void uncheckCheckbox(String type,String key) throws Exception
 	{
+		By element = PropertiesHandler.getCompleteElement(type, key);	
+		boolean isChecked = driver.findElement(element).isSelected();
+		if(isChecked){
+			log.info("Clicking on the checkbox to uncheck:" +element);
+			driver.findElement(element).click();
+		}
 	}
 
-	//steps to toggle checkbox
-	@Then("^I toggle checkbox having (.+) \"(.*?)\"$")
-	public void toggleCheckbox(String type,String accessName) throws Exception
-	{
-	}
-
-	// step to select radio button
+	/** Select a radio button */
 	@Then("^I select radio button having (.+) \"(.*?)\"$")
-	public void selectRadioButton(String type, String accessName) throws Exception
+	public void selectRadioButton(String type, String key) throws Exception
 	{
+		By element = PropertiesHandler.getCompleteElement(type, key);	
+		boolean isSelected = driver.findElement(element).isSelected();
+		if(!isSelected){
+			log.info("Clicking on the radio button to select:" +element);
+			driver.findElement(element).click();
+		}
 
 	}
-
-	// steps to select option by text from radio button group
-	@Then("^I select \"(.*?)\" option by (.+) from radio button group having (.+) \"(.*?)\"$")
-	public void selectOptionFromRadioBtnButton(String option,String by, String type, String accessName) throws Exception
-	{
-	}
-
-
 }

@@ -1,7 +1,10 @@
 package com.test.step.defintions;
 
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import cucumber.api.java.en.Then;
 
@@ -17,19 +20,41 @@ public class JavascriptHandlingSteps {
 		 driver= Hooks.driver;
 	}
 
-		//Step to handle java script
-		@Then("^I accept alert$")
-		public void handleAlert()
-		{
-
+	/** Handle and accept a JavaScript alert */
+	@Then("^I accept alert$")
+	public void handleAlert()
+	{
+		try{
+		   //Wait 10 seconds until the alert is present
+		   WebDriverWait wait = new WebDriverWait(driver, 10);
+		   Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+		  
+		   //Accept the alert.
+		   alert.accept();
+		   System.out.println("The alert was accepted successfully.");
+		}catch(Throwable e){
+		   System.err.println("Error came while waiting for the alert popup. "+e.getMessage());
 		}
 
-		//Steps to dismiss java script
-		@Then("^I dismiss alert$")
-		public void dismissAlert()
-		{
+	}
 
+	/** Handle and dismiss a JavaScript alert */
+	@Then("^I dismiss alert$")
+	public void dismissAlert()
+	{
+		try{
+		   //Wait 10 seconds until the alert is present
+		   WebDriverWait wait = new WebDriverWait(driver, 10);
+		   Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+		  
+		   //Dismiss the alert.
+		   alert.dismiss();		
+		   System.out.println("The alert was dismissed successfully.");
+		}catch(Throwable e){
+		   System.err.println("Error came while waiting for the alert popup. "+e.getMessage());
 		}
+
+	}
 		
 		
 }
