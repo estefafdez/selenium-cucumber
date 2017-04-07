@@ -60,8 +60,7 @@ public class NavigationSteps {
 		// Store the current window handle
 		String winHandleBefore = driver.getWindowHandle();
 
-		// Perform the click operation that opens new window
-
+	
 		// Switch to new window opened
 		for(String winHandle : driver.getWindowHandles()){
 		    driver.switchTo().window(winHandle);
@@ -83,14 +82,14 @@ public class NavigationSteps {
 	@Then("^I switch to window having title \"(.*?)\"$")
 	public void switchToNewWindowsByTitle(String windowTitle) throws Exception
 	{
-		
+		driver.switchTo().window(windowTitle);
 	}
 	  
 	//Close new window
 	@Then("^I close new window$")
 	public void closeNewWindows()
 	{
-		
+
 	}
 	
 	// Switch between frame 

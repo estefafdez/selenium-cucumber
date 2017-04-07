@@ -4,6 +4,7 @@ Feature: Home page
   Scenario: I type the url of estefafdez website on the browser
     Given I navigate to "http://estefafdez.com"
     Then I wait for 2 seconds
-    Then I click on element having xpath "englishFlag"
+    When I click on element having xpath "englishFlag"
     Then I wait for 4 seconds
+    And I take screenshot
     Then I close browser

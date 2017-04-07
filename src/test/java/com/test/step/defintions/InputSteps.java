@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
 import com.selenium.configure.environment.PropertiesHandler;
 
 import cucumber.api.java.en.Then;
@@ -35,6 +34,19 @@ public class InputSteps {
 		input.clear();
 		log.info("Sending text: "+text+"into element"+element);
 		input.sendKeys(text);
+	}
+	
+	/** Enter a text into an input field element slowly */
+	@Then("^I slowly enter \"([^\"]*)\" into input field having (.+) \"([^\"]*)\"$")
+	public void slowSendKeys(String text, String type,String key) throws Exception
+	{
+		By element = PropertiesHandler.getCompleteElement(type, key);
+		WebElement input = driver.findElement(element);
+		input.click();
+		for (char c : text.toCharArray()) {
+			ProgressSteps.wait(5);
+			input.sendKeys(""+c);
+		}
 	}
 
 	/** Clear input field element. */
