@@ -1,5 +1,6 @@
 package com.test.step.defintions;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,6 +18,10 @@ import cucumber.api.java.en.Then;
 public class ProgressSteps {
 	static WebDriver driver;
 	
+	/******** Log Attribute ********/
+    private static Logger log = Logger.getLogger(ProgressSteps.class);
+		
+	
 	public ProgressSteps(){
 		 driver= Hooks.driver;
 	}
@@ -24,6 +29,7 @@ public class ProgressSteps {
 	/** Wait for a specific period of time */
 	@Then("^I wait for (\\d+) seconds$")
 	public static void wait(int seconds) {
+		log.info("Waiting for..."+seconds + " seconds.");
 		new WebDriverWait(driver, seconds);
 	}
 
@@ -33,6 +39,7 @@ public class ProgressSteps {
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
 		WebDriverWait w = new WebDriverWait(driver, seconds);
+		log.info("Waiting forthe element: "+element);
 		w.until(ExpectedConditions.presenceOfElementLocated(element));
 	}
 	
@@ -42,6 +49,7 @@ public class ProgressSteps {
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
 		WebDriverWait w = new WebDriverWait(driver, seconds);
+		log.info("Waiting forthe element: "+element);
 		w.until(ExpectedConditions.visibilityOfElementLocated(element));
 	}
   
@@ -52,8 +60,8 @@ public class ProgressSteps {
 		By element = PropertiesHandler.getCompleteElement(type, key);
 		boolean enabled = driver.findElement(element).isEnabled();
 		WebDriverWait w = new WebDriverWait(driver, seconds);
+		log.info("Waiting forthe element: "+element);
 		w.until(ExpectedConditions.elementSelectionStateToBe(element, enabled));
-
 	}
 	
 	/** Wait for an element to be clickable for a specific period of time */
@@ -62,8 +70,7 @@ public class ProgressSteps {
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
 		WebDriverWait w = new WebDriverWait(driver, seconds);
+		log.info("Waiting forthe element: "+element);
 		w.until(ExpectedConditions.elementToBeClickable(element));
-
-	}
-	
+	}	
 }

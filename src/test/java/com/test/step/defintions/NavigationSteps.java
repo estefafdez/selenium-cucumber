@@ -1,6 +1,13 @@
 package com.test.step.defintions;
 
+import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import com.selenium.configure.environment.PropertiesHandler;
 
 import cucumber.api.java.en.Then;
 
@@ -12,6 +19,9 @@ import cucumber.api.java.en.Then;
 public class NavigationSteps {
 	WebDriver driver;
 	
+	/******** Log Attribute ********/
+    private static Logger log = Logger.getLogger(NavigationSteps.class);
+		
 	public NavigationSteps(){
 		 driver= Hooks.driver;
 	}
@@ -21,12 +31,14 @@ public class NavigationSteps {
 	public void navigateTo(String url)
 	{
 	    driver.navigate().to(url);
+	    log.info("Navigate to: "+url);
 	}
 
 	/** Navigate forward */
 	@Then("^I navigate forward")
 	public void navigateForward()
 	{
+		log.info("Navigate forward");
 	    driver.navigate().forward();
 	}
 		
@@ -34,6 +46,7 @@ public class NavigationSteps {
 	@Then("^I navigate back")
 	public void navigateBack()
 	{
+		log.info("Navigate backward");
 	    driver.navigate().back();
 	}
 	
@@ -41,6 +54,7 @@ public class NavigationSteps {
 	@Then("^I refresh page$")
 	public void refreshPage()
 	{
+		log.info("Reflesh current page");
 	    driver.navigate().refresh();
 	}
 	
@@ -49,6 +63,7 @@ public class NavigationSteps {
 	public void switchNewWindow()
 	{
 		for(String winHandle : driver.getWindowHandles()){
+			log.info("Switching to new windows");
 		    driver.switchTo().window(winHandle);
 		}
 	}
@@ -59,94 +74,86 @@ public class NavigationSteps {
 	{
 		// Store the current window handle
 		String winHandleBefore = driver.getWindowHandle();
-
 	
 		// Switch to new window opened
-		for(String winHandle : driver.getWindowHandles()){
-		    driver.switchTo().window(winHandle);
+		for(String winHandle : driver.getWindowHandles())
+		{
+		    driver.switchTo().window(winHandle);		
 		}
-
 		// Perform the actions on new window
-
 		// Close the new window, if that window no more required
 		driver.close();
-
 		// Switch back to original browser (first window)
 		driver.switchTo().window(winHandleBefore);
-
 		// Continue with original browser (first window)
 		
 	}
 		
-	//Switch to new window by window title
+	/** Switch to a new windows by windows title */
 	@Then("^I switch to window having title \"(.*?)\"$")
 	public void switchToNewWindowsByTitle(String windowTitle) throws Exception
 	{
+		log.info("Switching to the windows by title: " + windowTitle);
 		driver.switchTo().window(windowTitle);
 	}
 	  
-	//Close new window
-	@Then("^I close new window$")
-	public void closeNewWindows()
+	/** Close a windows by title */
+	@Then("^I close window \"(.*?)\"$")
+	public void closeNewWindows(String windowTitle)
 	{
-
+		log.info("Switching to the windows by title: " + windowTitle);
+		driver.switchTo().window(windowTitle);
+		log.info("Closing windows: "+ windowTitle);
+		driver.close();
 	}
 	
-	// Switch between frame 
-	
-	// Step to switch to frame by web element
-	@Then("^I switch to frame having (.+) \"(.*?)\"$") 
-	public void switchFrameByElement(String method, String value)
-	{
-		
-	}
-		
-	// step to switch to main content
-	@Then("^I switch to main content$")
-	public void switchToDefaultContent()
-	{
-		
-	}
-
-	// To interact with browser
-	
-	// step to resize browser
+	/** Resize browser */
 	@Then("^I resize browser window size to width (\\d+) and height (\\d+)$")
 	public void resizeBrowser(int width, int heigth)
 	{
-	
+		log.info("Reside browser to: " + width + "x" + heigth);
+		driver.manage().window().setSize(new Dimension(width, heigth));
 	}
 	
-	// step to maximize browser
+	/** Maximize the browser */
 	@Then("^I maximize browser window$")
 	public void maximizeBrowser()
 	{
 	    driver.manage().window().maximize();
 	}
-		
-// zoom in/out page
-	
-	// steps to zoom in page
-	@Then("^I zoom in page$") 
-	public void zoomIn()
+
+
+	/** Zoom in the page */
+	@Then("^I zoom out the page$")
+	public void zoomOIn()
 	{
+
 		
 	}
 	
-	// steps to zoom out page
-	@Then("^I zoom out page$")
+	/** Zoom out the page */
+	@Then("^I zoom out the page$")
 	public void zoomOut()
 	{
 		
 	}
-
-// zoom out webpage till necessary element displays
 	
-	// steps to zoom out till element displays
-	@Then("^I zoom out page till I see element having (.+) \"(.*?)\"$")
-	public void zoomTillElementDisplay(String type, String accessName) throws Exception
+	/** Zoom into an element of the page */
+	@Then("^I zoom in until I see the element having (.+) \"(.*?)\"$") 
+	public void zoomInElement(String type, String key)
 	{
-	
+		By element = PropertiesHandler.getCompleteElement(type, key);
+		WebElement html = driver.findElement(element);
+		html.sendKeys(Keys.chord(Keys.CONTROL, Keys.ADD));		
+	}
+
+	/** Zoom out until the element is displayed  */
+	@Then("^I zoom out page till I see element having (.+) \"(.*?)\"$")
+	public void zoomTillElementDisplay(String type, String key) throws Exception
+	{
+		By element = PropertiesHandler.getCompleteElement(type, key);
+		WebElement html = driver.findElement(element);
+		html.sendKeys(Keys.chord(Keys.CONTROL, "0"));
 	}
 	
 // reset webpage view use

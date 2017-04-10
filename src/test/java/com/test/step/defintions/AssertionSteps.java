@@ -87,18 +87,22 @@ public class AssertionSteps {
 		if(present.equals("should")){			
 			log.info("The element" + element +" should be present");
 			if(state.equals("enabled")){
+				log.info("The element" + element +" should be present and enabled");
 				Assert.assertTrue("The element by " + element + "is disabled", enable);
 			}
 			else if(state.equals("disabled")){
+				log.info("The element" + element +" should be present and disabled");
 				Assert.assertFalse("The element by " + element + "is enabled", enable);
 			}
 		}
 		else if(present.equals("should not")){
 			log.info("The element" + element +" should not be present");
 			if(state.equals("enabled")){
+				log.info("The element" + element +" should not be present and enabled");
 				Assert.assertTrue("The element by " + element + "is disabled", enable);
 			}
 			else if(state.equals("disabled")){
+				log.info("The element" + element +" should not be present and disable");
 				Assert.assertFalse("The element by " + element + "is enabled", enable);
 			}
 		}

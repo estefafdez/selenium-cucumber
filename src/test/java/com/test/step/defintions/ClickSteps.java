@@ -6,8 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import com.selenium.configure.environment.PropertiesHandler;
-
-import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 /**
  * This class contains methods to allow you to click on an element
@@ -25,7 +24,7 @@ public class ClickSteps {
 	}
 
 	/** Click on a WebElement */
-	@Then("^I click on element having (.+) \"(.*?)\"$") 
+	@When("^I click on element having (.+) \"(.*?)\"$") 
 	public void click(String type, String key) throws Exception
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
@@ -34,7 +33,7 @@ public class ClickSteps {
 	}
  
 	/** Double click on a WebElement */
-	@Then("^I double click on element having (.+) \"(.*?)\"$") 
+	@When("^I double click on element having (.+) \"(.*?)\"$") 
 	public void doubleClick(String type, String key) throws Exception
 	{
 		Actions action = new Actions(driver);
@@ -44,7 +43,7 @@ public class ClickSteps {
 	}
 		
 	/** Click on a link having text */
-	@Then("^I click on link having text \"(.*?)\"$")
+	@When("^I click on link having text \"(.*?)\"$")
 	public void clickElementByLink(String text)
 	{
 		By element = PropertiesHandler.getCompleteElement("linkText", text);
@@ -53,7 +52,7 @@ public class ClickSteps {
 	}
 		
 	/** Click on a link having partial text */
-	@Then("^I click on link having partial text \"(.*?)\"$")
+	@When("^I click on link having partial text \"(.*?)\"$")
 	public void clickElementByPartialLink(String text)
 	{
 		By element = PropertiesHandler.getCompleteElement("partialLinkText", text);

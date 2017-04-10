@@ -1,6 +1,7 @@
 package com.test.step.defintions;
 
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,6 +17,9 @@ import cucumber.api.java.en.Then;
 public class JavascriptHandlingSteps {
 	WebDriver driver;
 	
+	/******** Log Attribute ********/
+    private static Logger log = Logger.getLogger(JavascriptHandlingSteps.class);
+	
 	public JavascriptHandlingSteps(){
 		 driver= Hooks.driver;
 	}
@@ -25,17 +29,13 @@ public class JavascriptHandlingSteps {
 	public void handleAlert()
 	{
 		try{
-		   //Wait 10 seconds until the alert is present
 		   WebDriverWait wait = new WebDriverWait(driver, 10);
-		   Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-		  
-		   //Accept the alert.
+		   Alert alert = wait.until(ExpectedConditions.alertIsPresent());		  
 		   alert.accept();
-		   System.out.println("The alert was accepted successfully.");
+		   log.info("The alert was accepted successfully.");
 		}catch(Throwable e){
-		   System.err.println("Error came while waiting for the alert popup. "+e.getMessage());
+		   log.error("Error came while waiting for the alert popup. "+e.getMessage());
 		}
-
 	}
 
 	/** Handle and dismiss a JavaScript alert */
@@ -43,18 +43,13 @@ public class JavascriptHandlingSteps {
 	public void dismissAlert()
 	{
 		try{
-		   //Wait 10 seconds until the alert is present
 		   WebDriverWait wait = new WebDriverWait(driver, 10);
 		   Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-		  
-		   //Dismiss the alert.
 		   alert.dismiss();		
-		   System.out.println("The alert was dismissed successfully.");
+		   log.info("The alert was dismissed successfully.");
 		}catch(Throwable e){
-		   System.err.println("Error came while waiting for the alert popup. "+e.getMessage());
+		   log.error("Error came while waiting for the alert popup. "+e.getMessage());
 		}
-
 	}
-		
 		
 }
