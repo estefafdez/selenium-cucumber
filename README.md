@@ -42,13 +42,15 @@ You just need to change the following lines:
 On this project you can find the following set of predefined steps ordered by action already done for you. 
 The types of actions are:
 
-- Navigation Steps
 - Assertion Steps
-- Input Steps
 - Click Steps
+- Configuration Steps
+- Input Steps
+- JavaScript Handling Steps
+- Keyboard Steps
+- Navigation Steps
 - Progress Steps
 - Screenshot Steps
-- Configuration Steps
 
 If you want more information or more predefined steps to add into your project you can visit: 
 
