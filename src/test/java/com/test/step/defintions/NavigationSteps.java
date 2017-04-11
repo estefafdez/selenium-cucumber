@@ -3,13 +3,15 @@ package com.test.step.defintions;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.selenium.configure.environment.PropertiesHandler;
 
-import cucumber.api.java.en.Then;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.When;
 
 /**
  * This class contains methods to allow you navigate on the browser
@@ -27,15 +29,15 @@ public class NavigationSteps {
 	}
 
 	/** Navigate to a specified URL */
-	@Then("^I navigate to \"([^\"]*)\"$")
+	@When("^I navigate to \"([^\"]*)\"$")
 	public void navigateTo(String url)
 	{
+		log.info("Navigate to: "+url);
 	    driver.navigate().to(url);
-	    log.info("Navigate to: "+url);
 	}
 
 	/** Navigate forward */
-	@Then("^I navigate forward")
+	@And("^I navigate forward")
 	public void navigateForward()
 	{
 		log.info("Navigate forward");
@@ -43,7 +45,7 @@ public class NavigationSteps {
 	}
 		
 	/** Navigate backward */
-	@Then("^I navigate back")
+	@And("^I navigate back")
 	public void navigateBack()
 	{
 		log.info("Navigate backward");
@@ -51,7 +53,7 @@ public class NavigationSteps {
 	}
 	
 	/** Refresh current page */
-	@Then("^I refresh page$")
+	@And("^I refresh page$")
 	public void refreshPage()
 	{
 		log.info("Reflesh current page");
@@ -59,7 +61,7 @@ public class NavigationSteps {
 	}
 	
 	/** Switch to a new windows */
-	@Then("^I switch to new window$")
+	@When("^I switch to new window$")
 	public void switchNewWindow()
 	{
 		for(String winHandle : driver.getWindowHandles()){
@@ -69,28 +71,16 @@ public class NavigationSteps {
 	}
 		 
 	/** Switch to the previous windows */
-	@Then("^I switch to previous window$")
+	@When("^I switch to previous window$")
 	public void switchPreviousWindows()
 	{
-		// Store the current window handle
-		String winHandleBefore = driver.getWindowHandle();
-	
-		// Switch to new window opened
-		for(String winHandle : driver.getWindowHandles())
-		{
-		    driver.switchTo().window(winHandle);		
-		}
-		// Perform the actions on new window
-		// Close the new window, if that window no more required
-		driver.close();
-		// Switch back to original browser (first window)
-		driver.switchTo().window(winHandleBefore);
-		// Continue with original browser (first window)
+		log.info("Switching of previous windows");
+		driver.switchTo().defaultContent();
 		
 	}
 		
 	/** Switch to a new windows by windows title */
-	@Then("^I switch to window having title \"(.*?)\"$")
+	@When("^I switch to window having title \"(.*?)\"$")
 	public void switchToNewWindowsByTitle(String windowTitle) throws Exception
 	{
 		log.info("Switching to the windows by title: " + windowTitle);
@@ -98,7 +88,7 @@ public class NavigationSteps {
 	}
 	  
 	/** Close a windows by title */
-	@Then("^I close window \"(.*?)\"$")
+	@And("^I close window \"(.*?)\"$")
 	public void closeNewWindows(String windowTitle)
 	{
 		log.info("Switching to the windows by title: " + windowTitle);
@@ -108,7 +98,7 @@ public class NavigationSteps {
 	}
 	
 	/** Resize browser */
-	@Then("^I resize browser window size to width (\\d+) and height (\\d+)$")
+	@And("^I resize browser window size to width (\\d+) and height (\\d+)$")
 	public void resizeBrowser(int width, int heigth)
 	{
 		log.info("Reside browser to: " + width + "x" + heigth);
@@ -116,30 +106,39 @@ public class NavigationSteps {
 	}
 	
 	/** Maximize the browser */
-	@Then("^I maximize browser window$")
+	@And("^I maximize browser window$")
 	public void maximizeBrowser()
 	{
+		log.info("Maximizing the windows");
 	    driver.manage().window().maximize();
 	}
 
-
 	/** Zoom in the page */
-	@Then("^I zoom out the page$")
-	public void zoomOIn()
+	@And("^I zoom in the page$")
+	public void zoomIn()
 	{
-
-		
+		log.info("Zoom in");
+		driver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL, Keys.ADD));		
 	}
 	
 	/** Zoom out the page */
-	@Then("^I zoom out the page$")
+	@And("^I zoom out the page$")
 	public void zoomOut()
 	{
-		
+		log.info("Zoom out");
+		driver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL, Keys.SUBTRACT));		 
 	}
 	
+	/** Set the zoom of the page to the 100% */
+	@And("^I set the zoom of the page to the 100%$")
+	public void zoomReset()
+	{
+		log.info("Reset Zoom at 100%");
+		driver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL, "0"));		 
+	}	
+	
 	/** Zoom into an element of the page */
-	@Then("^I zoom in until I see the element having (.+) \"(.*?)\"$") 
+	@And("^I zoom in until I see the element having (.+) \"(.*?)\"$") 
 	public void zoomInElement(String type, String key)
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
@@ -148,46 +147,38 @@ public class NavigationSteps {
 	}
 
 	/** Zoom out until the element is displayed  */
-	@Then("^I zoom out page till I see element having (.+) \"(.*?)\"$")
+	@And("^I zoom out page till I see element having (.+) \"(.*?)\"$")
 	public void zoomTillElementDisplay(String type, String key) throws Exception
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
 		WebElement html = driver.findElement(element);
 		html.sendKeys(Keys.chord(Keys.CONTROL, "0"));
 	}
-	
-// reset webpage view use
-	
-	@Then("^I reset page view$")
-	public void resetPageZoom()
-	{
-		
-	}
 
-// scroll webpage
-
-	@Then("^I scroll to (top|end) of page$")
+	/** Scroll to the (top/end) of the page. */
+	@And("^I scroll to (top|end) of page$")
 	public void scrollPage(String to) throws Exception
 	{
-		
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		if(to.equals("top")){
+			log.info("Scrolling to the top of the page");
+			jse.executeScript("scroll(0, -250);");
+				
+		}
+		else if(to.equals("end")){
+			log.info("Scrolling to the end of the page");
+			jse.executeScript("scroll(0, 250);");		
+		}		
 	} 
 
-	
-// scroll webpage to specific element
-	
-	@Then("^I scroll to element having (.+) \"(.*?)\"$")
-	public void scrollToElement(String type, String accessName) throws Exception
+	/** Scroll to an element. */
+	@And("^I scroll to element having (.+) \"(.*?)\"$")
+	public void scrollToElement(String type, String key) throws Exception
 	{
+		By element = PropertiesHandler.getCompleteElement(type, key);
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		log.info("Scrolling to element: " + element);
+		jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(element));		
 		
 	}
-
-// hover over element
-	
-	// Note: Doesn't work on Windows firefox
-	@Then("^I hover over element having (.+) \"(.*?)\"$")
-	public void hoverOverElement(String type, String accessName) throws Exception
-	{
-		
-	}
-
 }
