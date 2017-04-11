@@ -22,9 +22,26 @@ public class CreateDriver {
     private static String properties = "test.properties";
     private static Properties prop = new Properties();
     private static InputStream in = WebDriverFactory.class.getResourceAsStream("/test.properties");    
+    private static CreateDriver instance = null;
   
     /******** Log Attribute ********/
     private static Logger log = Logger.getLogger(CreateDriver.class);
+    
+    /******** Init config when the class is instanced ********/
+    private CreateDriver() {
+    	CreateDriver.initConfig();
+    }
+    
+    /**
+     * Singleton pattern
+     * @return a single instance
+     */
+    public static CreateDriver getInstance() {
+        if (instance == null) {
+            instance = new CreateDriver();
+        }
+        return instance;
+    }    
 
     /**
      * Get the Browser from the POM

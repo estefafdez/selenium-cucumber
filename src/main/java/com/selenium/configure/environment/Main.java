@@ -11,6 +11,21 @@ import org.apache.log4j.Logger;
 public class Main {
 	 /******** Log Attribute ********/
     private static Logger log = Logger.getLogger(Main.class);
+    private static Main instance = null;
+    
+    private Main() {    	
+    }
+    
+    /**
+     * Singleton pattern
+     * @return a single instance
+     */
+    public static Main getInstance() {
+        if (instance == null) {
+            instance = new Main();
+        }
+        return instance;
+    }    
 
     public static void main(String[] args) {
 

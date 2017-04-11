@@ -23,6 +23,22 @@ public class HandlerRepo {
     private static final int BUFFER_SIZE = 4096;
     /******** Log Attribute ********/
     private static Logger log = Logger.getLogger(HandlerRepo.class);
+    
+    private static HandlerRepo instance = null;
+    
+    private HandlerRepo() {    	
+    }
+    
+    /**
+     * Singleton pattern
+     * @return a single instance
+     */
+    public static HandlerRepo getInstance() {
+        if (instance == null) {
+            instance = new HandlerRepo();
+        }
+        return instance;
+    }    
 
     /**
      * Downloads a file from a URL

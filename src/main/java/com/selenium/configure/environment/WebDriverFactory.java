@@ -18,6 +18,22 @@ public class WebDriverFactory {
 	static String resourceFolder="resources/files/software/";
     /******** Log Attribute ********/
     private static Logger log = Logger.getLogger(WebDriverFactory.class);
+    
+	private static WebDriverFactory instance = null;
+	    
+    private WebDriverFactory() {    
+    }
+    
+    /**
+     * Singleton pattern
+     * @return a single instance
+     */
+    public static WebDriverFactory getInstance() {
+        if (instance == null) {
+            instance = new WebDriverFactory();
+        }
+        return instance;
+    }    
 	
 		
 	 public static WebDriver createNewWebDriver(String browser, String os){	
