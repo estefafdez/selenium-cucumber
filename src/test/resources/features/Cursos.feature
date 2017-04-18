@@ -1,5 +1,5 @@
-Feature: Contact section on the Homepage
-        As a user I can go to the estefafdez website homepage, click on contact and check the contact form.
+Feature: Cursos section on the Homepage
+        As a user I can go to the Código Facilito homepage, click on cursos and check the cursos page.
 
   Scenario: Get the Cursos section on the Código Facilito website.
     Given I navigate to "http://www.codigofacilito.com"
