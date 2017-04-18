@@ -27,7 +27,7 @@ public class CreateDriver {
     /******** Log Attribute ********/
     private static Logger log = Logger.getLogger(CreateDriver.class);
     
-    /******** Init config when the class is instanced ********/
+    /******** Initialize Driver Configuration when the class is instanced ********/
     private CreateDriver() {
     	CreateDriver.initConfig();
     }
@@ -67,8 +67,7 @@ public class CreateDriver {
         log.info("***********************************************************************************************************");
         
         /****** Load the driver *******/
-        driver = WebDriverFactory.createNewWebDriver(browser, os);
-       
+        driver = WebDriverFactory.createNewWebDriver(browser, os);       
         
         /******** Clean Cookies, maxinize and declare Timeout on the Driver *******/
         driver.manage().deleteAllCookies();

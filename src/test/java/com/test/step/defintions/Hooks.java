@@ -15,10 +15,17 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
 public class Hooks {
-	public static WebDriver driver;
-	Logger log = Logger.getLogger(Hooks.class);
+	
+		public static WebDriver driver;
+		Logger log = Logger.getLogger(Hooks.class);
+		Scenario scenario = null;
+		
+		@Before
+		public void before(Scenario scenario) {
+			this.scenario = scenario;
+		}
 
-	 @Before
+		@Before
 	    /**
 	     * Delete all cookies at the start of each scenario to avoid
 	     * shared state between tests
@@ -27,9 +34,12 @@ public class Hooks {
 			log.info("***********************************************************************************************************");
 			log.info("[ Configuration ] - Initializing driver configuration");
 			log.info("***********************************************************************************************************");
-	    	driver = CreateDriver.initConfig();
-	    }
-
+	    	driver = CreateDriver.initConfig();	    
+	    	
+	    	log.info("***********************************************************************************************************");
+			log.info("[ Scenario ] - "+scenario.getName());
+			log.info("***********************************************************************************************************");
+	    }	 
 	     
 	 	@After
 	 	/**

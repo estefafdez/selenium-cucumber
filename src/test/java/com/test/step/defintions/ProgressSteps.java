@@ -39,7 +39,7 @@ public class ProgressSteps {
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
 		WebDriverWait w = new WebDriverWait(driver, seconds);
-		log.info("Waiting forthe element: "+element);
+		log.info("Waiting for the element: "+element + " to be present");
 		w.until(ExpectedConditions.presenceOfElementLocated(element));
 	}
 	
@@ -49,7 +49,7 @@ public class ProgressSteps {
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
 		WebDriverWait w = new WebDriverWait(driver, seconds);
-		log.info("Waiting forthe element: "+element);
+		log.info("Waiting for the element: "+element+ " to be visible");
 		w.until(ExpectedConditions.visibilityOfElementLocated(element));
 	}
   
@@ -60,7 +60,7 @@ public class ProgressSteps {
 		By element = PropertiesHandler.getCompleteElement(type, key);
 		boolean enabled = driver.findElement(element).isEnabled();
 		WebDriverWait w = new WebDriverWait(driver, seconds);
-		log.info("Waiting forthe element: "+element);
+		log.info("Waiting for the element: "+element + " to be enabled");
 		w.until(ExpectedConditions.elementSelectionStateToBe(element, enabled));
 	}
 	
@@ -70,7 +70,7 @@ public class ProgressSteps {
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
 		WebDriverWait w = new WebDriverWait(driver, seconds);
-		log.info("Waiting forthe element: "+element);
+		log.info("Waiting for the element: "+element+ " to be clickable");
 		w.until(ExpectedConditions.elementToBeClickable(element));
 	}	
 }

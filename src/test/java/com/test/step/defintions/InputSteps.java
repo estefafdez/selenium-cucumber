@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import com.selenium.configure.environment.PropertiesHandler;
 
-import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 /**
  * This class contains methods to allow you input into a field. 
@@ -25,7 +25,7 @@ public class InputSteps {
 	}
 
 	/** Enter a text into an input field element. */
-	@Then("^I enter \"([^\"]*)\" into input field having (.+) \"([^\"]*)\"$")
+	@When("^I enter \"([^\"]*)\" into input field having (.+) \"([^\"]*)\"$")
 	public void inputText(String text, String type,String key) throws Exception
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
@@ -37,7 +37,7 @@ public class InputSteps {
 	}
 	
 	/** Enter a text into an input field element slowly */
-	@Then("^I slowly enter \"([^\"]*)\" into input field having (.+) \"([^\"]*)\"$")
+	@When("^I slowly enter \"([^\"]*)\" into input field having (.+) \"([^\"]*)\"$")
 	public void slowSendKeys(String text, String type,String key) throws Exception
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
@@ -50,7 +50,7 @@ public class InputSteps {
 	}
 
 	/** Clear input field element. */
-	@Then("^I clear input field having (.+) \"([^\"]*)\"$") 
+	@When("^I clear input field having (.+) \"([^\"]*)\"$") 
 	public void clearText(String type, String key) throws Exception
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
@@ -62,7 +62,7 @@ public class InputSteps {
 	}
 
 	/** Select an option by text/value from a drop-down */
-	@Then("^I select \"(.*?)\" option by (.+) from dropdown having (.+) \"(.*?)\"$")
+	@When("^I select \"(.*?)\" option by (.+) from dropdown having (.+) \"(.*?)\"$")
 	public void selectOptionDropdown(String option,String optionBy,String type,String key) throws Exception
 	{
 		By dropdown = PropertiesHandler.getCompleteElement(type, key);		
@@ -80,7 +80,7 @@ public class InputSteps {
 	}
 	
 	/** Select an option by index from a drop-down */
-	@Then("^I select option (\\d+) by index from dropdown having (.+) \"(.*?)\"$")
+	@When("^I select option (\\d+) by index from dropdown having (.+) \"(.*?)\"$")
 	public void selectOptionDropdownByIndex(int option, String type, String key) throws Exception
 	{
 		By dropdown = PropertiesHandler.getCompleteElement(type, key);		
@@ -90,7 +90,7 @@ public class InputSteps {
 	}
 	
 	/** Clear all options selected from a drop-down */
-	@Then("^I clear all options selected from dropdown having (.+) \"(.*?)\"$")
+	@When("^I clear all options selected from dropdown having (.+) \"(.*?)\"$")
 	public void deselectAllOptionDropdown(String type, String key) throws Exception
 	{
 		By dropdown = PropertiesHandler.getCompleteElement(type, key);		
@@ -101,7 +101,7 @@ public class InputSteps {
 
 	
 	/** Unselect an option by text/value from a drop-down */
-	@Then("^I unselect \"(.*?)\" option by (.+) from dropdown having (.+) \"(.*?)\"$")
+	@When("^I unselect \"(.*?)\" option by (.+) from dropdown having (.+) \"(.*?)\"$")
 	public void unselectOptionMultiDropdown(String option,String optionBy, String type,String key) throws Exception
 	{
 		By dropdown = PropertiesHandler.getCompleteElement(type, key);		
@@ -118,7 +118,7 @@ public class InputSteps {
 	}
 		
 	/** Unselect an option by index from a drop-down */
-	@Then("^I unselect (\\d+) option by index from dropdown having (.+) \"(.*?)\"$")
+	@When("^I unselect (\\d+) option by index from dropdown having (.+) \"(.*?)\"$")
 	public void unselectOptionMultiDropdownByIndex(int option, String type, String key) throws Exception
 	{
 		By dropdown = PropertiesHandler.getCompleteElement(type, key);		
@@ -128,7 +128,7 @@ public class InputSteps {
 	}
 
 	/** Check an option from a checkbox */
-	@Then("^I check the checkbox having (.+) \"(.*?)\"$") 
+	@When("^I check the checkbox having (.+) \"(.*?)\"$") 
 	public void checkCheckbox(String type, String key) throws Exception
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);	
@@ -140,7 +140,7 @@ public class InputSteps {
 	}
 
 	/** Uncheck an option from a checkbox */
-	@Then("^I uncheck the checkbox having (.+) \"(.*?)\"$")
+	@When("^I uncheck the checkbox having (.+) \"(.*?)\"$")
 	public void uncheckCheckbox(String type,String key) throws Exception
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);	
@@ -152,7 +152,7 @@ public class InputSteps {
 	}
 
 	/** Select a radio button */
-	@Then("^I select radio button having (.+) \"(.*?)\"$")
+	@When("^I select radio button having (.+) \"(.*?)\"$")
 	public void selectRadioButton(String type, String key) throws Exception
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);	

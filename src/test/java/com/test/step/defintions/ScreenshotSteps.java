@@ -11,7 +11,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import cucumber.api.java.en.Then;
+import cucumber.api.java.en.And;
 
 /**
  * This class contains methods to allow you to take screenshots
@@ -28,7 +28,7 @@ public class ScreenshotSteps {
 	}
 
 	/** Take a screenshot */
-    @Then("^I take screenshot$")
+    @And("^I take screenshot$")
     public void takeScreenshot() throws IOException
     {
     	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmm");

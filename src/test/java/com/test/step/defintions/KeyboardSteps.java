@@ -11,8 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.selenium.configure.environment.PropertiesHandler;
-
-import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 /**
  * This class contains methods to allow you to use keyboard methods
@@ -31,7 +30,7 @@ public class KeyboardSteps {
 	}
 	
 	/** Press Key */
-	@Then("^I press the key (.+)$")
+	@When("^I press the key (.+)$")
     public static void pressKey(int key) {
 		Robot r;
         try {
@@ -45,7 +44,7 @@ public class KeyboardSteps {
      }
 	
 	/** Press Key */
-	@Then("^I release the keyboard key (.+)$")
+	@When("^I release the keyboard key (.+)$")
 	 public static void releaseKey(int key, int sleepTime) {
 
         Robot r;
@@ -60,7 +59,7 @@ public class KeyboardSteps {
     }
 	
 	/** Press Key */
-	@Then("^I press and release the keyboard key (.+)$")
+	@When("^I press and release the keyboard key (.+)$")
 	public static void pressReleaseKey(int key) {
         Robot r;
         try {
@@ -75,7 +74,7 @@ public class KeyboardSteps {
     }
 	
 	/** Moves the mouse over an element  */
-	@Then("^I move the mouse over an element having (.+) \"(.*?)\"$")
+	@When("^I move the mouse over an element having (.+) \"(.*?)\"$")
 	public static void moveMouseOverElement(String type, String key) {
         Robot r;
         By element = PropertiesHandler.getCompleteElement(type, key);
@@ -95,7 +94,7 @@ public class KeyboardSteps {
     }
 	
 	/** Moves the mouse out of an element  */
-	@Then("^I move the mouse out of an element having (.+) \"(.*?)\"$")
+	@When("^I move the mouse out of an element having (.+) \"(.*?)\"$")
 	public static void moveMouseOutElement(String type, String key) {
         Robot r;
         int x = 0, y = 0;

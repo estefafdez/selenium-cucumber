@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import cucumber.api.java.en.Then;
+import cucumber.api.java.en.And;
 
 /**
  * This class contains methods to allow you to handle Javascript 
@@ -25,7 +25,7 @@ public class JavascriptHandlingSteps {
 	}
 
 	/** Handle and accept a JavaScript alert */
-	@Then("^I accept alert$")
+	@And("^I accept alert$")
 	public void handleAlert()
 	{
 		try{
@@ -39,7 +39,7 @@ public class JavascriptHandlingSteps {
 	}
 
 	/** Handle and dismiss a JavaScript alert */
-	@Then("^I dismiss alert$")
+	@And("^I dismiss alert$")
 	public void dismissAlert()
 	{
 		try{
