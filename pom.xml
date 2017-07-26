@@ -20,10 +20,10 @@
 		
 		<!-- Versions section -->
 		<java.version>1.8</java.version>
-		<selenium.version>3.0.1</selenium.version>
+		<selenium.version>3.4.0</selenium.version>
 		<cucumber-java.version>1.2.2</cucumber-java.version>
 		<cucumber-junit.version>1.2.2</cucumber-junit.version>
-		<junit.version>4.11</junit.version>
+		<junit.version>4.12</junit.version>
 		<log4j.version>1.2.17</log4j.version>
 		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version> 
@@ -37,7 +37,7 @@
 		<!-- This Parameters select where run the test [Remote ,Firefox ,Chrome ,Internet Explorer] -->
 		<browser>Firefox</browser>
 		<!-- Test Operative system [linux, mac, windows]-->
-		<os>windows</os>
+		<os>mac</os>
 		<!-- Log Mode section -->
 		<!-- Parameter for logger level use in this order to include the right information [ALL > DEBUG > INFO > WARN > ERROR > FATAL > OFF]-->
 		<log.level>INFO</log.level>
