@@ -75,7 +75,7 @@ mvn clean verify sonar:sonar
 
 ## 5. Run SonarQube on a Docker easily.
 
-<img src="http://i229.photobucket.com/albums/ee100/osdia2/sonardocker.png" />
+<img src="http://i.imgur.com/e6T8aQH.png" />
 
 In case you don't want to install SonarQube on your local machine, you can run sonar remotely using <b>Docker</b>. 
 
