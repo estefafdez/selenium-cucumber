@@ -3,7 +3,7 @@
     	<modelVersion>4.0.0</modelVersion>
 		<groupId>SeleniumCucumberJava</groupId>
 	    <artifactId>com.selenium.cucumber</artifactId>
-	    <version>1.0.7</version>
+	    <version>1.0.8</version>
 		<developers>
 			<developer>
 				<name>estefafdez</name>
@@ -189,7 +189,7 @@
 			<properties>
 				<!-- Optional URL to server. Default value is http://localhost:9000 -->
 				<sonar.host.url>
-					http://pwd10_0_55_3-9000.host3.labs.play-with-docker.com/
+					http://pwd10-0-9-3-9000.host1.labs.play-with-docker.com/
 				</sonar.host.url>
 			</properties>
 		</profile>
