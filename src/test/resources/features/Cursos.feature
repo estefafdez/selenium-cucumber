@@ -6,5 +6,5 @@ Feature: Cursos section on the Homepage
     Then I wait 3 seconds for element having xpath "cursosMenuLink" to be clickable
     When I click on element having xpath "cursosMenuLink"
     And I wait for 2 seconds
-    Then element having xpath "specialCourses" should be present
+    Then element having xpath "movilCourses" should be present
     Then I close browser
