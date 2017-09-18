@@ -1,11 +1,17 @@
 # Selenium-Cucumber
 
-Selenium Webdriver 3.4.0 integration with Cucumber. 
+Selenium Webdriver 3.5.3 integration with Cucumber. 
 
 <img src="http://www.testingexcellence.com/wp-content/uploads/2016/01/selenium-and-cucumber.png" />
 _______________________________________
 
-## 1. Download the project.
+## 1. Requirements:
+
+- Firefox Version:  55.0.3 -> You need to update into this version!
+- Gekodriver Version: 0.19.0 (included on this project!)
+- Selenium Webdriver Version: 3.5.3 (included on this project!)
+
+## 2. Download the project.
 
 In order to start using the project you need to create your own Fork on Github and then clone the project:
 
@@ -13,7 +19,7 @@ In order to start using the project you need to create your own Fork on Github a
 git clone https://github.com/XXXX/selenium-cucumber
 ```
 
-## 2. Choose your OS, Browser and Log Level on the POM.
+## 3. Choose your OS, Browser and Log Level on the POM.
 
 On the pom.xml file you can choose between:
 - Several OS: Windows, Mac, Linux.
@@ -37,7 +43,7 @@ You just need to change the following lines:
 <log.level>YOUR_LOG_MODE</log.level>
 ```
 
-## 3. Step Definition By Action. 
+## 4. Step Definition By Action. 
 
 On this project you can find the following set of predefined steps ordered by action already done for you. 
 The types of actions are:
@@ -58,7 +64,7 @@ If you want more information or more predefined steps to add into your project y
 https://github.com/selenium-cucumber/selenium-cucumber-java/blob/master/doc/canned_steps.md
 ```
 
-## 4. SonarQube included.
+## 5. SonarQube included.
 
 In order to maintain the quality of your code and your project, we include SonarQube on this repository.
 You can install in two minutes using the SonarQube tutorial available here: 
@@ -73,7 +79,7 @@ And then, run the project in order to check the code quality:
 mvn clean verify sonar:sonar
 ```
 
-## 5. Run SonarQube on a Docker easily.
+## 6. Run SonarQube on a Docker easily.
 
 <img src="http://i.imgur.com/e6T8aQH.png" />
 
