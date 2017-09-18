@@ -7,9 +7,9 @@ _______________________________________
 
 ## 1. Requirements:
 
-- Firefox Version:  55.0.3
-- Gekodriver Version: 0.19.0
-- Selenium Webdriver Version: 3.5.3
+- Firefox Version:  55.0.3 -> You need to update into this version!
+- Gekodriver Version: 0.19.0 (included on this project!)
+- Selenium Webdriver Version: 3.5.3 (included on this project!)
 
 ## 2. Download the project.
 
