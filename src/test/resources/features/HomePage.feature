@@ -7,4 +7,3 @@ Feature: Home page
     When I click on element having xpath "englishFlag"
     Then I wait for 4 seconds
     And I take screenshot
-    Then I close browser

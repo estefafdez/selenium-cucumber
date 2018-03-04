@@ -1,15 +1,20 @@
 # Selenium-Cucumber
 
-Selenium Webdriver 3.5.3 integration with Cucumber. 
+Selenium Webdriver 3.9.1 integration with Cucumber. 
 
 <img src="http://www.testingexcellence.com/wp-content/uploads/2016/01/selenium-and-cucumber.png" />
 _______________________________________
 
-## 1. Requirements:
+## 1. Latest changes:
 
-- Firefox Version:  55.0.3 -> You need to update into this version!
-- Gekodriver Version: 0.19.0 (included on this project!)
-- Selenium Webdriver Version: 3.5.3 (included on this project!)
+- Selenium Webdriver Version: 3.5.3 (included on this project!) With 3.10.0 the FirefoxDriver seems broken, so we will update once it fixed.
+- Firefox Version:  58.0.2 -> You need to update into this version!
+- Gekodriver Version: 0.19.1 (included on this project!)
+- ChromeDriver updated into version 2.35 (included on this project!)
+- InternetExplorerDriver updated into version 3.9.0 (included on this project!)
+- Added commons-fileupload 1.3 into the POM.
+- Added guava 24.0-jre into the POM
+- Updated several libraries on the POM.
 
 ## 2. Download the project.
 

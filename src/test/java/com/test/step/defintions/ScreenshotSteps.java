@@ -31,11 +31,11 @@ public class ScreenshotSteps {
     @And("^I take screenshot$")
     public void takeScreenshot() throws IOException
     {
-    	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmm");
-    	String screenShotName = "resources/screenshot/" + dateFormat.format(GregorianCalendar.getInstance().getTime());		
-    	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-    	log.info("Screenshot saved as:" + screenShotName);
-    	FileUtils.copyFile(scrFile, new File(String.format("%s.png", screenShotName)));    	
+		    	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmm");
+		    	String screenShotName = "resources/screenshot/" + dateFormat.format(GregorianCalendar.getInstance().getTime());		
+		    	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		    	log.info("Screenshot saved as:" + screenShotName);
+		    	FileUtils.copyFile(scrFile, new File(String.format("%s.png", screenShotName)));    	
     }
 
 	

@@ -3,10 +3,8 @@ package com.selenium.configure.environment;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-
-
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
  * This class select and configure the Driver according to your browser selection on the POM.
