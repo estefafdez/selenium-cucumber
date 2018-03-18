@@ -7,7 +7,7 @@ _______________________________________
 
 ## 1. Latest changes:
 
-- Selenium Webdriver Version: 3.9.1 (included on this project!) With 3.10.0 the FirefoxDriver seems broken, so we will update once it fixed.
+- Selenium Webdriver Version: __3.11.0__ (latest version of Seneium!).
 - Firefox Version:  58.0.2 -> You need to update into this version!
 - Gekodriver Version: 0.19.1 (included on this project!)
 - ChromeDriver updated into version 2.35 (included on this project!)
