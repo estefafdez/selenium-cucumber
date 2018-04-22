@@ -2,6 +2,8 @@
 
 Selenium Webdriver 3.11.0 integration with Cucumber. 
 
+[![Build Status](https://travis-ci.org/estefafdez/selenium-cucumber.svg?branch=master)](https://travis-ci.org/estefafdez/selenium-cucumber)
+
 <img src="http://www.testingexcellence.com/wp-content/uploads/2016/01/selenium-and-cucumber.png" />
 _______________________________________
 
