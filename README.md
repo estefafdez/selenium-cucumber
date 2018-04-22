@@ -15,6 +15,7 @@ _______________________________________
 - Added commons-fileupload 1.3 into the POM.
 - Added guava 24.0-jre into the POM
 - Updated several libraries on the POM.
+- Added TravisCI.
 
 ## 2. Download the project.
 
