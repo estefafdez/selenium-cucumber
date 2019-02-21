@@ -43,7 +43,6 @@ public class PropertiesHandler {
         return selector;
     }
  
-
      /**
       * Get the complete element with a selected type and key.
       */
