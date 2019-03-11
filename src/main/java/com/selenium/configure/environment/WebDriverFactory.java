@@ -3,8 +3,9 @@ package com.selenium.configure.environment;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
 /**
  * This class select and configure the Driver according to your browser selection on the POM.
@@ -39,13 +40,18 @@ public class WebDriverFactory {
 			
 		 /******** The driver selected is Local: Firefox  ********/    	
 		 if ("FIREFOX".equalsIgnoreCase(browser)) {
+			 
+			 FirefoxOptions firefoxOptions = new FirefoxOptions();
+			    firefoxOptions.setCapability("headless", true);
+
 			 if("WINDOWS".equalsIgnoreCase(os)){
 				 System.setProperty("webdriver.gecko.driver", resourceFolder+os+"/geckodriver.exe");    
 			 }
 			 else{
 				 System.setProperty("webdriver.gecko.driver", resourceFolder+os+"/geckodriver");    
 			 }
-		     driver = new FirefoxDriver();	
+			 
+		     driver = new FirefoxDriver(firefoxOptions);	
 		 }
 					        
 		 /******** The driver selected is Chrome  ********/
