@@ -1,6 +1,6 @@
-3.141.59# Selenium-Cucumber
+# Selenium-Cucumber
 
-[![Build Status](https://travis-ci.org/estefafdez/selenium-cucumber.svg?branch=master)](https://travis-ci.org/estefafdez/selenium-cucumber)   Selenium Webdriver 3.141.59 integration with Cucumber. 
+[![Build Status](https://travis-ci.org/estefafdez/selenium-cucumber.svg?branch=master)](https://travis-ci.org/estefafdez/selenium-cucumber) Selenium Webdriver integration with Cucumber. 
 
 <img src="http://www.testingexcellence.com/wp-content/uploads/2016/01/selenium-and-cucumber.png" />
 _______________________________________

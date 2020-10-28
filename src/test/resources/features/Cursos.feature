@@ -5,5 +5,5 @@ Feature: Cursos section on the Homepage
     Given I navigate to "http://www.codigofacilito.com"
     When I click on element having xpath "cursosMenuLink"
     And I wait for 5 seconds
-    Then element having xpath "movilCourses" should be present
+    Then element having xpath "exploraCursos" should be present
 

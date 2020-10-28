@@ -2,8 +2,6 @@ Feature: Home page
         As a user I can go to the estefafdez website homepage
 
   Scenario: Get the estefafdez website homepage
-    Given I navigate to "http://estefafdez.com"
+    Given I navigate to "https://estefafdez.github.io/"
     Then I wait for 2 seconds
-    When I click on element having xpath "englishFlag"
-    Then I wait for 4 seconds
     And I take screenshot

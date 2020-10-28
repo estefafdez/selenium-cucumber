@@ -49,7 +49,7 @@
     <dependencies>
         <!-- These are the cucumber dependencies -->
         <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber-java.version}</version>
             <scope>test</scope>
@@ -57,7 +57,7 @@
 
         <!-- These are the cucumber-junit dependencies -->
         <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber-junit.version}</version>
             <scope>test</scope>
@@ -101,7 +101,7 @@
 
 		<!-- These are the apache ant dependencies -->	
 		<dependency>
-		    <groupId>ant</groupId>
+		    <groupId>org.apache.ant</groupId>
 		    <artifactId>ant</artifactId>
 		    <version>${ant.version}</version>
 		</dependency>

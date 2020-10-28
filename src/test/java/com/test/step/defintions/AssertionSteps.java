@@ -19,7 +19,7 @@ import cucumber.api.java.en.Then;
  * @author estefafdez
  */
 public class AssertionSteps {
-	private WebDriver driver;
+	WebDriver driver;
 	private WebDriverWait w;
 	public static final int EXPLICIT_TIMEOUT = 15; 
 	
