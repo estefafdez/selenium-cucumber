@@ -31,7 +31,7 @@
 		<ant.version>1.7.0</ant.version>
 		<sonar-maven-plugin.version>4.5.7</sonar-maven-plugin.version>
 		<jsoup.version>1.13.1</jsoup.version>
-		<guava.version>24.1.1-jre</guava.version>
+		<guava.version>30.0-android</guava.version>
 		<commons-fileupload.version>1.4</commons-fileupload.version>
 		 
 
