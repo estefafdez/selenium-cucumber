@@ -21,7 +21,7 @@ public class JavascriptHandlingSteps {
     private static Logger log = Logger.getLogger(JavascriptHandlingSteps.class);
 	
 	public JavascriptHandlingSteps(){
-		 driver= Hooks.driver;
+		 driver= Hooks.getDriver();
 	}
 
 	/** Handle and accept a JavaScript alert */

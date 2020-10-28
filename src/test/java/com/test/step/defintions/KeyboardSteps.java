@@ -26,7 +26,7 @@ public class KeyboardSteps {
     private static Logger log = Logger.getLogger(KeyboardSteps.class);
 	
 	public KeyboardSteps(){
-		 driver= Hooks.driver;
+		 driver= Hooks.getDriver();
 	}
 	
 	/** Press Key */

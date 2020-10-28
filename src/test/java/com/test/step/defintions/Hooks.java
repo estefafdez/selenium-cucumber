@@ -14,9 +14,9 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
-public class Hooks {
+public abstract class Hooks {
 	
-		public static WebDriver driver;
+		private static WebDriver driver;
 		Logger log = Logger.getLogger(Hooks.class);
 		Scenario scenario = null;
 		
@@ -50,8 +50,8 @@ public class Hooks {
 	        if(scenario.isFailed()) {
 		        try {
 		        	scenario.write("The scenario failed.");
-		        	scenario.write("Current Page URL is " + driver.getCurrentUrl());
-		            byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+		        	scenario.write("Current Page URL is " + getDriver().getCurrentUrl());
+		            byte[] screenshot = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BYTES);
 		            scenario.embed(screenshot, "resources/screenshot");
 		        } catch (WebDriverException somePlatformsDontSupportScreenshots) {
 		            System.err.println(somePlatformsDontSupportScreenshots.getMessage());
@@ -61,7 +61,16 @@ public class Hooks {
 			log.info("***********************************************************************************************************");
 			log.info("[ Driver Status ] - Clean and close the intance of the driver");
 			log.info("***********************************************************************************************************");
-	        driver.quit();
+	        getDriver().quit();
 	        
 	    }
+
+	 	/**
+	 	 * Method to get the driver
+	 	 * @return driver
+	 	 */
+		public static WebDriver getDriver() {
+			return driver;
+		}
+
 }

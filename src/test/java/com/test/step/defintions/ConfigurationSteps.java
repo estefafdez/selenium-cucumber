@@ -15,7 +15,7 @@ public class ConfigurationSteps {
     private static Logger log = Logger.getLogger(ConfigurationSteps.class);
     
 	public ConfigurationSteps(){
-		 driver= Hooks.driver;
+		 driver= Hooks.getDriver();
 	}
 
   	

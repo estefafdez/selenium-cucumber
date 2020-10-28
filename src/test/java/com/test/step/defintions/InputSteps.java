@@ -21,7 +21,7 @@ public class InputSteps {
     private static Logger log = Logger.getLogger(InputSteps.class);
 	
 	public InputSteps(){
-		 driver= Hooks.driver;
+		 driver= Hooks.getDriver();
 	}
 
 	/** Enter a text into an input field element. */

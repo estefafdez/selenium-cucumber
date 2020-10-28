@@ -25,7 +25,7 @@ public class NavigationSteps {
     private static Logger log = Logger.getLogger(NavigationSteps.class);
 		
 	public NavigationSteps(){
-		 driver= Hooks.driver;
+		 driver= Hooks.getDriver();
 	}
 
 	/** Navigate to a specified URL */

@@ -19,14 +19,16 @@ import cucumber.api.java.en.Then;
  * @author estefafdez
  */
 public class AssertionSteps {
-	WebDriver driver;
+	private WebDriver driver;
+	private WebDriverWait w;
 	public static final int EXPLICIT_TIMEOUT = 15; 
 	
 	/******** Log Attribute ********/
     private static Logger log = Logger.getLogger(AssertionSteps.class);
 	
 	public AssertionSteps(){
-		 driver= Hooks.driver;
+		 driver= Hooks.getDriver();
+		 w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
 	}
 
 	/** Check if the page title (is/is not) the same */
@@ -64,8 +66,8 @@ public class AssertionSteps {
 	public void checkElementText(String type, String key,String present,String text) throws Exception 
 	{
 		By element = PropertiesHandler.getCompleteElement(type, key);
-		WebDriverWait w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
-		boolean textElement = w.until(ExpectedConditions.textToBePresentInElementLocated(element,  text));
+
+		boolean textElement = w.until(ExpectedConditions.textToBePresentInElementLocated(element, text)) !=null;
 		
 		if(present.equals("should")){			
 			log.info("The element: "+ element +"with the text" + text +" should be present");
@@ -164,7 +166,6 @@ public class AssertionSteps {
 	public void checkElementPresent(String text, String present) 
 	{
 		WebElement element = driver.findElement(By.linkText(text));
-		WebDriverWait w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
 		boolean isPresent = w.until(ExpectedConditions.textToBePresentInElement(element,  text));
 		
 		if(present.equals("should")){
@@ -182,7 +183,6 @@ public class AssertionSteps {
 	public void checkPartialElementPresent(String text,String present) 
 	{
 		WebElement element = driver.findElement(By.partialLinkText(text));
-		WebDriverWait w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
 		boolean isPresent = w.until(ExpectedConditions.textToBePresentInElement(element,  text));
 		
 		if(present.equals("should")){

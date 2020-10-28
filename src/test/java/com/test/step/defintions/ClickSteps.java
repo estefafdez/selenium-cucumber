@@ -20,7 +20,7 @@ public class ClickSteps {
     private static Logger log = Logger.getLogger(ClickSteps.class);
 	
 	public ClickSteps(){
-		 driver= Hooks.driver;
+		 driver= Hooks.getDriver();
 	}
 
 	/** Click on a WebElement */

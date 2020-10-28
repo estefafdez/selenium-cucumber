@@ -24,7 +24,7 @@ public class ScreenshotSteps {
     private static Logger log = Logger.getLogger(AssertionSteps.class);
 	
 	public ScreenshotSteps(){
-		 driver= Hooks.driver;
+		 driver= Hooks.getDriver();
 	}
 
 	/** Take a screenshot */

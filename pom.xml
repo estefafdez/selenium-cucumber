@@ -21,8 +21,8 @@
 		<!-- Versions section -->
 		<java.version>1.8</java.version>
 		<selenium.version>3.141.59</selenium.version>
-		<cucumber-java.version>1.2.5</cucumber-java.version>
-		<cucumber-junit.version>1.2.5</cucumber-junit.version>
+		<cucumber-java.version>1.2.6</cucumber-java.version>
+		<cucumber-junit.version>1.2.6</cucumber-junit.version>
 		<junit.version>4.13.1</junit.version>
 		<log4j.version>1.2.17</log4j.version>
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
@@ -31,15 +31,15 @@
 		<ant.version>1.7.0</ant.version>
 		<sonar-maven-plugin.version>4.5.7</sonar-maven-plugin.version>
 		<jsoup.version>1.13.1</jsoup.version>
-		<guava.version>30.0-android</guava.version>
+		<guava.version>30.0-jre</guava.version>
 		<commons-fileupload.version>1.4</commons-fileupload.version>
 		 
 
     	<!-- Test Browser -->
 		<!-- This Parameters select where run the test [Remote ,Firefox ,Chrome ,Internet Explorer] -->
-		<browser>Firefox</browser>
+		<browser>Chrome</browser>
 		<!-- Test Operative system [linux, mac, windows]-->
-		<os>linux</os>
+		<os>mac</os>
 		<!-- Log Mode section -->
 		<!-- Parameter for logger level use in this order to include the right information [ALL > DEBUG > INFO > WARN > ERROR > FATAL > OFF]-->
 		<log.level>INFO</log.level>

@@ -23,7 +23,7 @@ public class ProgressSteps {
 		
 	
 	public ProgressSteps(){
-		 driver= Hooks.driver;
+		 driver= Hooks.getDriver();
 	}
 
 	/** Wait for a specific period of time */

@@ -1,19 +1,14 @@
-# Selenium-Cucumber
+3.141.59# Selenium-Cucumber
 
-[![Build Status](https://travis-ci.org/estefafdez/selenium-cucumber.svg?branch=master)](https://travis-ci.org/estefafdez/selenium-cucumber)   Selenium Webdriver 3.11.0 integration with Cucumber. 
+[![Build Status](https://travis-ci.org/estefafdez/selenium-cucumber.svg?branch=master)](https://travis-ci.org/estefafdez/selenium-cucumber)   Selenium Webdriver 3.141.59 integration with Cucumber. 
 
 <img src="http://www.testingexcellence.com/wp-content/uploads/2016/01/selenium-and-cucumber.png" />
 _______________________________________
 
 ## 1. Latest changes:
 
-- Selenium Webdriver Version: __3.11.0__ (latest version of Selenium!).
-- Firefox Version:  58.0.2 -> You need to update into this version!
-- Gekodriver Version: 0.19.1 (included on this project!)
-- ChromeDriver updated into version 2.35 (included on this project!)
-- InternetExplorerDriver updated into version 3.9.0 (included on this project!)
-- Added commons-fileupload 1.3 into the POM.
-- Added guava 24.0-jre into the POM
+- Selenium Webdriver Version: __3.141.59__ (latest version of Selenium!).
+- Gekodriver, ChromeDriver and InternetExplorerDriver updated on this project. 
 - Updated several libraries on the POM.
 - Added TravisCI.
 
