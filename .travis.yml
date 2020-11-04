@@ -1,3 +1,14 @@
 language: java
 
 script: "mvn clean"
+
+slack:
+  - rooms:
+    - d-conspiratorios:xzIh8oGD67pRkmgHlnz8moKY
+    on_success: always
+    on_failure: always
+    template:
+      - "Repo `%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}`."
+      - "Execution time: *%{duration}*"
+      - "Message: %{message}"
+      - "Test Results: $RESULTS"
