@@ -28,7 +28,7 @@
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version> 
 		<httpclient.version>4.5.5</httpclient.version>
-		<ant.version>1.10.9</ant.version>
+		<ant.version>1.10.11</ant.version>
 		<sonar-maven-plugin.version>4.5.7</sonar-maven-plugin.version>
 		<jsoup.version>1.13.1</jsoup.version>
 		<guava.version>30.0-jre</guava.version>
