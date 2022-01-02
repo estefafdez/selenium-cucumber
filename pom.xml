@@ -30,8 +30,8 @@
 		<httpclient.version>4.5.5</httpclient.version>
 		<ant.version>1.10.11</ant.version>
 		<sonar-maven-plugin.version>4.5.7</sonar-maven-plugin.version>
-		<jsoup.version>1.14.1</jsoup.version>
-		<guava.version>30.0-jre</guava.version>
+		<jsoup.version>1.14.2</jsoup.version>
+		<guava.version>30.1-jre</guava.version>
 		<commons-fileupload.version>1.4</commons-fileupload.version>
 		 
 
