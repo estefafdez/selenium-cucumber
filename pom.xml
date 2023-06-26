@@ -30,10 +30,10 @@
 		<httpclient.version>4.5.5</httpclient.version>
 		<ant.version>1.10.11</ant.version>
 		<sonar-maven-plugin.version>4.5.7</sonar-maven-plugin.version>
-		<jsoup.version>1.14.2</jsoup.version>
+		<jsoup.version>1.15.3</jsoup.version>
 		<guava.version>32.0.0-jre</guava.version>
-		<commons-fileupload.version>1.5</commons-fileupload.version> 
-      
+		<commons-fileupload.version>1.5</commons-fileupload.version>
+		 
     	<!-- Test Browser -->
 		<!-- This Parameters select where run the test [Remote ,Firefox ,Chrome ,Internet Explorer] -->
 		<browser>Chrome</browser>
