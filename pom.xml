@@ -20,7 +20,7 @@
 		
 		<!-- Versions section -->
 		<java.version>1.8</java.version>
-		<selenium.version>4.0.0</selenium.version>
+		<selenium.version>4.9.1</selenium.version>
 		<cucumber-java.version>1.2.6</cucumber-java.version>
 		<cucumber-junit.version>1.2.6</cucumber-junit.version>
 		<junit.version>4.13.1</junit.version>
@@ -28,9 +28,9 @@
 		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version> 
 		<httpclient.version>4.5.5</httpclient.version>
-		<ant.version>1.10.12</ant.version>
+		<ant.version>1.10.13</ant.version>
 		<sonar-maven-plugin.version>4.5.7</sonar-maven-plugin.version>
-		<jsoup.version>1.15.3</jsoup.version>
+		<jsoup.version>1.16.1</jsoup.version>
 		<guava.version>32.0.1-jre</guava.version>
 		<commons-fileupload.version>1.5</commons-fileupload.version>
 		 
