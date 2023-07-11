@@ -31,7 +31,7 @@
 		<ant.version>1.10.13</ant.version>
 		<sonar-maven-plugin.version>4.5.7</sonar-maven-plugin.version>
 		<jsoup.version>1.16.1</jsoup.version>
-		<guava.version>32.0.0-jre</guava.version>
+		<guava.version>32.0.1-jre</guava.version>
 		<commons-fileupload.version>1.5</commons-fileupload.version>
 		 
     	<!-- Test Browser -->
