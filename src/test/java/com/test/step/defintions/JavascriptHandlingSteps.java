@@ -1,6 +1,7 @@
 package com.test.step.defintions;
 
 
+import java.time.Duration;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
@@ -29,7 +30,7 @@ public class JavascriptHandlingSteps {
 	public void handleAlert()
 	{
 		try{
-		   WebDriverWait wait = new WebDriverWait(driver, 10);
+		   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		   Alert alert = wait.until(ExpectedConditions.alertIsPresent());		  
 		   alert.accept();
 		   log.info("The alert was accepted successfully.");
@@ -43,7 +44,7 @@ public class JavascriptHandlingSteps {
 	public void dismissAlert()
 	{
 		try{
-		   WebDriverWait wait = new WebDriverWait(driver, 10);
+		   WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		   Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 		   alert.dismiss();		
 		   log.info("The alert was dismissed successfully.");
