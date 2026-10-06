@@ -1,16 +1,16 @@
 # Selenium-Cucumber
 
-[![Build Status](https://travis-ci.org/estefafdez/selenium-cucumber.svg?branch=master)](https://travis-ci.org/estefafdez/selenium-cucumber) Selenium Webdriver integration with Cucumber. 
+[![CI](https://github.com/estefafdez/selenium-cucumber/actions/workflows/ci.yml/badge.svg)](https://github.com/estefafdez/selenium-cucumber/actions/workflows/ci.yml) Selenium Webdriver integration with Cucumber. 
 
 <img src="http://www.testingexcellence.com/wp-content/uploads/2016/01/selenium-and-cucumber.png" />
 _______________________________________
 
-## 1. Latest changes:
+## 1. Stack:
 
-- Selenium Webdriver Version: __3.141.59__ (latest version of Selenium!).
-- Gekodriver, ChromeDriver and InternetExplorerDriver updated on this project. 
-- Updated several libraries on the POM.
-- Added TravisCI.
+- Selenium WebDriver: __4.35.0__.
+- Cucumber (JVM) __1.2.6__ with JUnit __4.13.1__.
+- Java 8 or higher and Maven.
+- CI with GitHub Actions: the project is compiled on every push and pull request.
 
 ## 2. Download the project.
 
@@ -106,4 +106,3 @@ And then, you are ready to run SonarQube:
 ```bash
 mvn clean install sonar:sonar
 ```
-
