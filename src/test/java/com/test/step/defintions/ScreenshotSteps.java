@@ -6,7 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +22,7 @@ import cucumber.api.java.en.And;
 public class ScreenshotSteps {
 	WebDriver driver;
 	/******** Log Attribute ********/
-    private static Logger log = Logger.getLogger(AssertionSteps.class);
+    private static Logger log = LogManager.getLogger(AssertionSteps.class);
 	
 	public ScreenshotSteps(){
 		 driver= Hooks.getDriver();

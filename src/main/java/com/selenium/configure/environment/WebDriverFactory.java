@@ -1,6 +1,7 @@
 package com.selenium.configure.environment;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -15,7 +16,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class WebDriverFactory {	
 	static String resourceFolder="resources/files/software/";
     /******** Log Attribute ********/
-    private static Logger log = Logger.getLogger(WebDriverFactory.class);
+    private static Logger log = LogManager.getLogger(WebDriverFactory.class);
     
 	private static WebDriverFactory instance = null;
 	    
@@ -73,4 +74,4 @@ public class WebDriverFactory {
 			    	    
 	    return driver;
         }
-	}
+}

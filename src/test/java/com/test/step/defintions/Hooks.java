@@ -2,7 +2,8 @@ package com.test.step.defintions;
 
 import java.net.MalformedURLException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +18,7 @@ import cucumber.api.java.Before;
 public abstract class Hooks {
 	
 		private static WebDriver driver;
-		Logger log = Logger.getLogger(Hooks.class);
+		Logger log = LogManager.getLogger(Hooks.class);
 		Scenario scenario = null;
 		
 		@Before

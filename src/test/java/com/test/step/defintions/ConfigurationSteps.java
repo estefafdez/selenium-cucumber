@@ -1,6 +1,7 @@
 package com.test.step.defintions;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import cucumber.api.java.en.And;
@@ -12,7 +13,7 @@ import cucumber.api.java.en.And;
 public class ConfigurationSteps {
 	WebDriver driver;
 	/******** Log Attribute ********/
-    private static Logger log = Logger.getLogger(ConfigurationSteps.class);
+    private static Logger log = LogManager.getLogger(ConfigurationSteps.class);
     
 	public ConfigurationSteps(){
 		 driver= Hooks.getDriver();
