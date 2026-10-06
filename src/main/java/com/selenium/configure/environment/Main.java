@@ -2,7 +2,8 @@ package com.selenium.configure.environment;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * This class contains methods to manage the latest release of the Geckodriver, ChromeDriver and IEDriver.
@@ -10,7 +11,7 @@ import org.apache.log4j.Logger;
  */
 public class Main {
 	 /******** Log Attribute ********/
-    private static Logger log = Logger.getLogger(Main.class);
+    private static Logger log = LogManager.getLogger(Main.class);
     private static Main instance = null;
     
     private Main() {    	
