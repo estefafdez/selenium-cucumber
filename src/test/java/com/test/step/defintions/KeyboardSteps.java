@@ -4,7 +4,8 @@ import java.awt.AWTException;
 import java.awt.MouseInfo;
 import java.awt.Robot;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -23,7 +24,7 @@ public class KeyboardSteps {
 	public static final int EXPLICIT_TIMEOUT = 5; 
 	
 	/******** Log Attribute ********/
-    private static Logger log = Logger.getLogger(KeyboardSteps.class);
+    private static Logger log = LogManager.getLogger(KeyboardSteps.class);
 	
 	public KeyboardSteps(){
 		 driver= Hooks.getDriver();
