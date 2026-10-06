@@ -1,5 +1,6 @@
 package com.test.step.defintions;
 
+import java.time.Duration;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
@@ -28,7 +29,7 @@ public class AssertionSteps {
 	
 	public AssertionSteps(){
 		 driver= Hooks.getDriver();
-		 w = new WebDriverWait(driver, EXPLICIT_TIMEOUT);
+		 w = new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_TIMEOUT));
 	}
 
 	/** Check if the page title (is/is not) the same */
