@@ -2,7 +2,6 @@
 
 [![CI](https://github.com/estefafdez/selenium-cucumber/actions/workflows/ci.yml/badge.svg)](https://github.com/estefafdez/selenium-cucumber/actions/workflows/ci.yml) Selenium Webdriver integration with Cucumber. 
 
-<img src="http://www.testingexcellence.com/wp-content/uploads/2016/01/selenium-and-cucumber.png" />
 _______________________________________
 
 ## 1. Stack:
