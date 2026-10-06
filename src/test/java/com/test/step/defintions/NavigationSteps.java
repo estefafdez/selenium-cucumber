@@ -1,6 +1,7 @@
 package com.test.step.defintions;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
@@ -22,7 +23,7 @@ public class NavigationSteps {
 	WebDriver driver;
 	
 	/******** Log Attribute ********/
-    private static Logger log = Logger.getLogger(NavigationSteps.class);
+    private static Logger log = LogManager.getLogger(NavigationSteps.class);
 		
 	public NavigationSteps(){
 		 driver= Hooks.getDriver();
