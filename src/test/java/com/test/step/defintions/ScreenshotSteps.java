@@ -12,7 +12,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import cucumber.api.java.en.And;
+import io.cucumber.java.en.And;
 
 /**
  * This class contains methods to allow you to take screenshots
