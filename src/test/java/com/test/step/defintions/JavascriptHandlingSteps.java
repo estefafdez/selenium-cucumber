@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import cucumber.api.java.en.And;
+import io.cucumber.java.en.And;
 
 /**
  * This class contains methods to allow you to handle Javascript 

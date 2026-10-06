@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.selenium.configure.environment.PropertiesHandler;
 
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.Then;
 
 /**
  * This class contains methods to allow you to wait for a certain event. 

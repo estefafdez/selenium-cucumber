@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import com.selenium.configure.environment.PropertiesHandler;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.When;
 
 /**
  * This class contains methods to allow you to click on an element

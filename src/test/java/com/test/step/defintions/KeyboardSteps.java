@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.selenium.configure.environment.PropertiesHandler;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.When;
 
 /**
  * This class contains methods to allow you to use keyboard methods
