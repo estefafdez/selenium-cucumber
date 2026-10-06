@@ -2,7 +2,8 @@ package com.test.step.defintions;
 
 
 import java.time.Duration;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,7 +20,7 @@ public class JavascriptHandlingSteps {
 	WebDriver driver;
 	
 	/******** Log Attribute ********/
-    private static Logger log = Logger.getLogger(JavascriptHandlingSteps.class);
+    private static Logger log = LogManager.getLogger(JavascriptHandlingSteps.class);
 	
 	public JavascriptHandlingSteps(){
 		 driver= Hooks.getDriver();
