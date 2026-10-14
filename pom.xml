@@ -25,7 +25,7 @@
 		<cucumber-junit.version>8.0.4</cucumber-junit.version>
 		<junit.version>4.13.2</junit.version>
 		<log4j.version>2.26.1</log4j.version>
-		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+		<maven-compiler-plugin.version>3.16.0</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>3.6.0</maven-surefire-plugin.version> 
 		<httpclient.version>4.5.5</httpclient.version>
 		<ant.version>1.10.18</ant.version>
