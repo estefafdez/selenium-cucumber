@@ -29,7 +29,7 @@
 		<maven-surefire-plugin.version>3.6.1</maven-surefire-plugin.version> 
 		<httpclient.version>4.5.5</httpclient.version>
 		<ant.version>1.10.18</ant.version>
-		<jsoup.version>1.23.2</jsoup.version>
+		<jsoup.version>1.24.1</jsoup.version>
 		<sonar-maven-plugin.version>5.1</sonar-maven-plugin.version>
 		<guava.version>33.7.2-jre</guava.version>
 		<commons-fileupload.version>1.6.0</commons-fileupload.version>
